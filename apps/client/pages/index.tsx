@@ -1,7 +1,9 @@
+import AddArea from '@components/AddArea';
+
 function Index() {
   return (
     <div>
-      Index
+      <AddArea />
     </div>
   );
 }
