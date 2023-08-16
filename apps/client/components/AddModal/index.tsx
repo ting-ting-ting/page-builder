@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { Modal, ModalHeader, Button } from '@mezzanine-ui/react';
 import { useForm } from 'react-hook-form';
 // import Paragraph1 from '@components/Templates/Paragraph/Paragraph1/Template';
@@ -19,7 +20,10 @@ const AddModal = ({
 } : AddModalProps) => {
   const methods = useForm();
 
-  console.log('templateData', templateData[targetId])
+  const target = useMemo(() => templateData[targetId], []);
+  const props = methods.watch();
+
+  console.log('templateData', target, props)
 
   return (
     <Modal
@@ -38,10 +42,10 @@ const AddModal = ({
         <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
         <div className={classes.modalBody}>
           <div className={classes.previewWrapper}>
-            {/* <Paragraph1 /> */}
+           {target.Template({...props})}
           </div>
           <div className={classes.fieldsWrapper}>
-            {/* <Paragraph1Editor /> */}
+            {target.Editor()}
           </div>
         </div>
         <div className={classes.modalFooter}>
