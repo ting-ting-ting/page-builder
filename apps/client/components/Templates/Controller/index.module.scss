@@ -1,6 +1,5 @@
 .root {
   position: relative;
-  cursor: pointer;
 
   &:hover {
     .controllerWrapper {
@@ -25,6 +24,11 @@
       height: 80px;
       color: #fff;
       background-color: transparent;
+
+      &.disabled {
+        cursor: not-allowed;
+        color: var(--gray4);
+      }
 
       &:hover {
         .icon {

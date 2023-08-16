@@ -31,7 +31,13 @@ function TemplatesContainer() {
           const TComponent: any = templateData[target.id].Template;
 
           return (
-            <Controller key={index} uuid={uuid} setEditUuid={setEditUuid}>
+            <Controller
+              key={index}
+              uuid={uuid}
+              setEditUuid={setEditUuid}
+              canNotUp={index === 0}
+              canNotDown={index === templateUuids.length - 1}
+            >
               <TComponent {...target.props} />
             </Controller>
           );
