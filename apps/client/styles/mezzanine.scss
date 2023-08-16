@@ -1,0 +1,11 @@
+@use '~@mezzanine-ui/core' as mzn-core;
+@use '~@mezzanine-ui/system' as mzn-system;
+@use '~@mezzanine-ui/system/spacing' as mzn-spacing;
+@use '~@mezzanine-ui/system/z-index' as mzn-z-index;
+
+:root {
+  @include mzn-system.common-variables();
+  @include mzn-spacing.variables();
+  @include mzn-z-index.variables();
+}
+@include mzn-core.styles();
