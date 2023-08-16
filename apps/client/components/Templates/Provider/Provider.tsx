@@ -1,6 +1,6 @@
 import { useCallback, useState, ReactNode } from 'react';
 import moment from 'moment';
-import { uniqueId } from 'lodash';
+import { uniqueId, omit } from 'lodash';
 import { TemplateContextProvider } from './Context';
 import { TemplateIdEnum } from '../enum';
 import { TemplateProps } from '../typing';
@@ -55,6 +55,18 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
     }));
   }, []);
 
+  const remove = useCallback((uuid: string) => {
+    setTemplateUuids(prevState => {
+      const targetIndex = prevState.findIndex(s => s === uuid);
+
+      return [
+        ...prevState.slice(0, targetIndex),
+        ...prevState.slice(targetIndex + 1),
+      ];
+    });
+    setTemplatesData(prevState => omit(prevState, uuid));
+  }, []);
+
   const onUp = useCallback((uuid: string) => {
     setTemplateUuids(prevArray => {
       const currentIndex = prevArray.findIndex(tUuid => tUuid === uuid);
@@ -86,6 +98,7 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
       value={{
         push,
         edit,
+        remove,
         onUp,
         onDown,
         templateUuids,
