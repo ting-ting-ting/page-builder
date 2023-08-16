@@ -1,0 +1,24 @@
+@import '@styles/typography.scss';
+@import '@styles/responsive.scss';
+
+.root {
+  padding: 40px var(--grid-system-margin);
+
+  .container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    .paragraphWrapper {
+      border-top: 2px solid var(--green4);
+      padding: 24px 16px 0;
+      width: gs-columns-width(4);
+
+      .text {
+        @include typo-body1;
+        font-weight: 500;
+        color: var(--black);
+      }
+    }
+  }
+}
