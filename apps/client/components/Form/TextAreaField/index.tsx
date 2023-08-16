@@ -3,6 +3,7 @@ import { Textarea, TextareaProps } from '@mezzanine-ui/react';
 import { useFormContext, useFormState, useWatch } from 'react-hook-form';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
 import { useDefaultValue } from '../utils/useDefaultValue';
+import classes from './index.module.scss';
 
 export type TextAreaFieldProps = TextareaProps & RegisteredFieldProps<HookFormFieldType> & {
   label?: string;
@@ -55,14 +56,15 @@ const TextAreaField = ({
   );
 
   return (
-    <div>
+    <div className={classes.root}>
       {label && (
-        <p>{label}</p>
+        <p className={classes.label}>{label}</p>
       )}
       <Textarea
         fullWidth
         clearable={clearable}
         maxLength={maxLength}
+        className={classes.textarea}
         textareaProps={{
           id: registerName,
           name: registerName,
