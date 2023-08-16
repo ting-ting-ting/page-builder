@@ -12,18 +12,21 @@
     align-items: center;
     justify-content: center;
     position: absolute;
-    gap: 20px;
     top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background-color: rgba(22, 22, 22, 0.5);
+    left: var(--grid-system-margin);
+    background-color: #fff;
+    border: 1px solid var(--gray2);
 
     .actionBtn {
-      width: 80px;
-      height: 80px;
-      color: #fff;
+      width: 40px;
+      height: 40px;
+      color: var(--black);
       background-color: transparent;
+      border-right: 1px solid var(--gray2);
+
+      &:last-child {
+        border-right: none;
+      }
 
       &.disabled {
         cursor: not-allowed;
@@ -37,7 +40,7 @@
       }
 
       .icon {
-        font-size: 52px;
+        font-size: 32px;
       }
     }
   }
