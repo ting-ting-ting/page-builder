@@ -18,6 +18,8 @@ export type TemplateContextValues = {
     uuid: string;
     props: TemplateProps;
   }) => void;
+  onUp: (uuid: string) => void;
+  onDown: (uuid: string) => void;
   templateUuids: string[];
   templatesData: {
     [uuid: string]: {
@@ -31,6 +33,8 @@ export type TemplateContextValues = {
 export const TemplateContext = createContext<TemplateContextValues>({
   push: () => {},
   edit: () => {},
+  onUp: () => {},
+  onDown: () => {},
   templateUuids: [],
   templatesData: {},
 });

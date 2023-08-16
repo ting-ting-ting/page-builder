@@ -64,11 +64,37 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
     }));
   }, []);
 
+  const onUp = useCallback((uuid: string) => {
+    const currentIndex = templateUuids.findIndex(tUuid => tUuid === uuid);
+    const prevIndex = currentIndex - 1;
+    const array = templateUuids;
+
+    array[currentIndex] = array[prevIndex];
+    array[prevIndex] = uuid;
+
+    console.log('array', templateUuids, array)
+
+    setTemplateUuids(array);
+  }, [templateUuids]);
+
+  const onDown = useCallback((uuid: string) => {
+    const currentIndex = templateUuids.findIndex(tUuid => tUuid === uuid);
+    const nextIndex = currentIndex + 1;
+    const array = templateUuids;
+
+    array[currentIndex] = array[nextIndex];
+    array[nextIndex] = uuid;
+
+    setTemplateUuids(array);
+  }, [templateUuids]);
+
   return (
     <TemplateContextProvider
       value={{
         push,
         edit,
+        onUp,
+        onDown,
         templateUuids,
         templatesData,
       }}

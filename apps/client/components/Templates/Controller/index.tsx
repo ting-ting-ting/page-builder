@@ -1,6 +1,7 @@
 import { ReactNode, Dispatch, SetStateAction } from 'react';
 import { IconButton, Icon, cx } from '@mezzanine-ui/react';
 import { ArrowDownIcon, ArrowUpIcon, DocIcon } from '@mezzanine-ui/icons';
+import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import classes from './index.module.scss';
 
 type ControllerProps = {
@@ -18,6 +19,11 @@ const Controller = ({
   canNotUp,
   canNotDown,
 } : ControllerProps) => {
+  const {
+    onUp,
+    onDown,
+  } = useTemplate();
+
   return (
     <div className={classes.root}>
       {children}
@@ -38,6 +44,9 @@ const Controller = ({
           className={cx(classes.actionBtn, {
             [classes.disabled]: canNotUp,
           })}
+          onClick={() => {
+            onUp(uuid);
+          }}
           disabled={canNotUp}
         >
           <Icon icon={ArrowUpIcon} className={classes.icon} />
@@ -48,6 +57,9 @@ const Controller = ({
           className={cx(classes.actionBtn, {
             [classes.disabled]: canNotDown,
           })}
+          onClick={() => {
+            onDown(uuid);
+          }}
           disabled={canNotDown}
         >
           <Icon icon={ArrowDownIcon} className={classes.icon} />
