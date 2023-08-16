@@ -13,6 +13,7 @@ export type TemplateContextValues = {
   }) => void;
   templates: {
     id: TemplateIdEnum;
+    uid: string;
     props: TemplateProps;
   }[];
 };
