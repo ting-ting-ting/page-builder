@@ -8,6 +8,7 @@ type ControllerProps = {
   children: ReactNode;
   uuid: string;
   setEditUuid: Dispatch<SetStateAction<string>>;
+  setPushUuid: Dispatch<SetStateAction<string>>;
   canNotUp: boolean;
   canNotDown: boolean;
 }
@@ -16,6 +17,7 @@ const Controller = ({
   children,
   uuid,
   setEditUuid,
+  setPushUuid,
   canNotUp,
   canNotDown,
 } : ControllerProps) => {
@@ -77,7 +79,13 @@ const Controller = ({
         </IconButton>
       </div>
       <div className={classes.plusWrapper}>
-        <IconButton type="button" className={classes.plusBtn}>
+        <IconButton
+          type="button"
+          onClick={() => {
+            setPushUuid(uuid);
+          }}
+          className={classes.plusBtn}
+        >
           <Icon icon={PlusIcon} className={classes.plusIcon} />
         </IconButton>
       </div>

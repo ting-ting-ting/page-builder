@@ -15,10 +15,15 @@ function TemplatesContainer() {
   } = useTemplate();
 
   const [editUuid, setEditUuid] = useState<string>('');
+  const [pushUuid, setPushUuid] = useState<string>('');
 
-  const onClose = useCallback(() => {
+  const onEditClose = useCallback(() => {
     setEditUuid('');
-  }, [])
+  }, []);
+
+  const onPushClose = useCallback(() => {
+    setPushUuid('');
+  }, []);
 
   console.log('templates', templateUuids, templatesData);
   console.log('editUuid', editUuid)
@@ -35,6 +40,7 @@ function TemplatesContainer() {
               key={index}
               uuid={uuid}
               setEditUuid={setEditUuid}
+              setPushUuid={setPushUuid}
               canNotUp={index === 0}
               canNotDown={index === templateUuids.length - 1}
             >
@@ -45,9 +51,14 @@ function TemplatesContainer() {
       </div>
       <TemplateEditModal
         open={!!editUuid}
-        onClose={onClose}
+        onClose={onEditClose}
         uuid={editUuid}
         editMode
+      />
+      <TemplateEditModal
+        open={!!pushUuid}
+        onClose={onPushClose}
+        uuid={pushUuid}
       />
     </>
   );
