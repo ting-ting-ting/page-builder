@@ -19,6 +19,7 @@ const Form = ({
 } : FormProps) => {
   const {
     push,
+    edit,
     templatesData,
   } = useTemplate();
   const editMode = useMemo(() => !!uuid, [uuid]);
@@ -33,8 +34,6 @@ const Form = ({
   }, [uuid, templatesData, targetIndex]);
 
   const defaultValues = useMemo(() => uuid ? templatesData[uuid].props : targetTemplate.defaultValues, [templatesData, uuid, targetTemplate]);
-
-  console.log('defaultValues', defaultValues)
 
   const methods = useForm<TemplateProps>({
     defaultValues,
@@ -54,15 +53,16 @@ const Form = ({
     }
   }, [targetIndex]);
 
-  console.log('templatesData', templatesData)
-
   return (
     <FormFieldsWrapper<TemplateProps>
       methods={methods}
       className={classes.form}
       onSubmit={(data) => {
-        if (editMode) {
-          console.log('edit!', data, uuid)
+        if (uuid) {
+          edit({
+            uuid,
+            props,
+          })
         } else {
           push({
             id: targetTemplate.id,

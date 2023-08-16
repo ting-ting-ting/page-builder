@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { Modal } from '@mezzanine-ui/react';
 import Form from './Form';
 import classes from './index.module.scss';
@@ -26,4 +25,4 @@ const TemplateEditModal = ({
   );
 }
 
-export default memo(TemplateEditModal);
+export default TemplateEditModal;

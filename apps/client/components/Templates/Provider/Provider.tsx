@@ -1,4 +1,4 @@
-import { useCallback, useState, useMemo, ReactNode } from 'react';
+import { useCallback, useState, useEffect, ReactNode } from 'react';
 import moment from 'moment';
 import { uniqueId } from 'lodash';
 import { TemplateContextProvider } from './Context';
@@ -11,6 +11,25 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
     uuid: string;
     props: TemplateProps;
   }[]>([]);
+  const [templateUuids, setTemplateUuids] = useState<string[]>([]);
+  const [templatesData, setTemplatesData] = useState<{
+    [uuid: string]: {
+      id: TemplateIdEnum;
+      uuid: string;
+      props: TemplateProps;
+    }
+  }>({});
+
+  useEffect(() => {
+    const newTemplateUuids = templates.map(t => t.uuid);
+    const templatesData = templates.reduce((prev, curr) => ({
+      ...prev,
+      [curr.uuid]: curr,
+    }), {})
+
+    setTemplateUuids(newTemplateUuids);
+    setTemplatesData(templatesData);
+  }, [templates]);
 
   const push = useCallback(({
     id,
@@ -29,16 +48,27 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
     ]);
   }, []);
 
-  const templateUuids = useMemo(() => templates.map(t => t.uuid), [templates]);
-  const templatesData = useMemo(() => templates.reduce((prev, curr) => ({
-    ...prev,
-    [curr.uuid]: curr,
-  }), {}), [templates]);
+  const edit = useCallback(({
+    uuid,
+    props
+  } : {
+    uuid: string;
+    props: TemplateProps;
+  }) => {
+    setTemplatesData(prevState => ({
+      ...prevState,
+      [uuid]: {
+        ...prevState[uuid],
+        props,
+      },
+    }));
+  }, []);
 
   return (
     <TemplateContextProvider
       value={{
         push,
+        edit,
         templateUuids,
         templatesData,
       }}
