@@ -2,34 +2,42 @@
 @import '@styles/responsive.scss';
 
 .root {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
   width: 100%;
   height: 100%;
 
-  .modalHeader {
-    align-self: stretch;
-    padding: 20px var(--grid-system-margin);
-  }
-
-  .modalBody {
-    flex: 1;
-    align-self: stretch;
-
-    .previewWrapper {
-      border-bottom: 1px solid var(--gray5);
-    }
-  }
-
-  .modalFooter {
+  .form {
+    height: 100%;
     display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    align-self: stretch;
-    border-top: 1px solid var(--gray5);
-    padding: 20px var(--grid-system-margin);
-    gap: 10px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .modalHeader {
+      align-self: stretch;
+      padding: 20px var(--grid-system-margin);
+    }
+
+    .modalBody {
+      flex: 1;
+      align-self: stretch;
+
+      .previewWrapper {
+        border-bottom: 1px solid var(--gray5);
+      }
+
+      .fieldsWrapper {
+        padding: 40px var(--grid-system-margin);
+      }
+    }
+
+    .modalFooter {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      align-self: stretch;
+      border-top: 1px solid var(--gray5);
+      padding: 20px var(--grid-system-margin);
+      gap: 10px;
+    }
   }
 }
