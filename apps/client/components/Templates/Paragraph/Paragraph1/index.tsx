@@ -1,10 +1,11 @@
 import Editor from './Editor';
 import Template from './Template';
-
-export const paragraph_1 = 'paragraph_1';
+import { ParagraphIdEnum } from '../enum';
 
 export const paragraph1Index = {
-  id: paragraph_1,
-  Editor: Editor,
-  Template: Template,
+  [ParagraphIdEnum.PARAGRAPH_1]: {
+    id: ParagraphIdEnum.PARAGRAPH_1,
+    Editor: Editor,
+    Template: Template,
+  },
 }

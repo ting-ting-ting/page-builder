@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 // import Paragraph1 from '@components/Templates/Paragraph/Paragraph1/Template';
 import FormFieldsWrapper from '@components/Form/FormFieldsWrapper';
 // import Paragraph1Editor from '@components/Templates/Paragraph/Paragraph1/Editor';
-import { templateData } from '@components/Templates/index';
+import { templateData, ids } from '@components/Templates/index';
 import classes from './index.module.scss';
 
 type AddModalProps = {
@@ -11,13 +11,15 @@ type AddModalProps = {
   onClose: VoidFunction;
 }
 
+const targetId = ids[0];
+
 const AddModal = ({
   open,
   onClose,
 } : AddModalProps) => {
   const methods = useForm();
 
-  console.log('templateData', templateData)
+  console.log('templateData', templateData[targetId])
 
   return (
     <Modal
