@@ -22,9 +22,28 @@
       align-self: stretch;
 
       .previewWrapper {
+        display: flex;
+        align-items: center;
+        position: relative;
         height: 400px;
         overflow-y: auto;
         border-bottom: 1px solid var(--gray5);
+
+        .preview {
+          flex: 1;
+        }
+
+        .arrowBtn {
+          position: absolute;
+
+          &.leftBtn {
+            left: 20px;
+          }
+
+          &.rightBtn {
+            right: 20px;
+          }
+        }
       }
 
       .fieldsWrapper {

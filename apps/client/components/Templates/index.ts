@@ -4,6 +4,6 @@ export const templateData = {
   ...paragraphIndex,
 }
 
-export const ids = [
+export const templateIds = [
   ...paragraphIds,
 ]
