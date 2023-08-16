@@ -15,8 +15,9 @@ const AddModal = ({
       open={open}
       onClose={onClose}
       className={classes.root}
+      direction="left"
     >
-      <ModalHeader>HHH</ModalHeader>
+      <ModalHeader>選擇模板</ModalHeader>
       <ModalBody>123</ModalBody>
     </Modal>
   );
