@@ -55,3 +55,13 @@ body {
 html {
   width: 100%;
 }
+
+body {
+  position: relative;
+  width: 100%;
+
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
