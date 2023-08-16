@@ -4,7 +4,7 @@
   "license": "MIT",
   "homepage": "https://ting-ting-ting.github.io/page-builder",
   "scripts": {
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d apps/client"
   },
   "private": true,
   "dependencies": {
