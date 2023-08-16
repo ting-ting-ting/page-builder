@@ -1,3 +1,4 @@
+import { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import classes from './index.module.scss';
 
@@ -6,14 +7,22 @@ const AddModal = dynamic(() => import('@components/AddModal'), {
 });
 
 const AddArea = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const onClose = useCallback(() => {
+    setOpen(false);
+  }, []);
+
   return (
     <>
       <div className={classes.root}>
-        <div className={classes.area}>
+        <div className={classes.area} onClick={() => {
+          setOpen(s => !s);
+        }}>
           <p className={classes.add}>增加</p>
         </div>
       </div>
-      <AddModal />
+      <AddModal open={open} onClose={onClose} />
     </>
   );
 }

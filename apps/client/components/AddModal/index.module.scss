@@ -1,0 +1,10 @@
+@import '@styles/typography.scss';
+@import '@styles/responsive.scss';
+
+.root {
+  width: 1000px;
+
+  @include mediaQueryUnder($pc1024) {
+    width: 100%;
+  }
+}

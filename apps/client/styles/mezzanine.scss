@@ -12,3 +12,15 @@
 }
 
 @include mzn-core.styles();
+
+.mzn-overlay {
+  .mzn-modal {
+    max-height: unset;
+    background-color: #fff;
+    margin: 0;
+    top: unset;
+    right: unset;
+    bottom: unset;
+    left: unset;
+  }
+}
