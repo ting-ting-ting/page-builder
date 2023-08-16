@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { Textarea, TextareaProps } from '@mezzanine-ui/react';
 import { useFormContext, useFormState, useWatch } from 'react-hook-form';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
-import { useDefaultValue } from '../utils/useDefaultValue';
 import classes from './index.module.scss';
 
 export type TextAreaFieldProps = TextareaProps & RegisteredFieldProps<HookFormFieldType> & {
@@ -38,8 +37,6 @@ const TextAreaField = ({
     }) || "";
 
   const { errors } = useFormState({ control: control || contextControl });
-
-  useDefaultValue(registerName, defaultValue);
 
   const registration = useMemo(
     () =>
