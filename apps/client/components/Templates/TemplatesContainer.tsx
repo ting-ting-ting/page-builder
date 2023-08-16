@@ -4,7 +4,7 @@ import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import { templateData } from '@components/Templates/index';
 import Controller from './Controller';
 
-const AddModal = dynamic(() => import('@components/AddModal'), {
+const TemplateEditModal = dynamic(() => import('@components/TemplateEditModal'), {
   ssr: false,
 });
 
@@ -37,7 +37,7 @@ function TemplatesContainer() {
           );
         })}
       </div>
-      <AddModal
+      <TemplateEditModal
         open={!!editUuid}
         onClose={onClose}
         uuid={editUuid}

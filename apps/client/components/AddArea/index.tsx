@@ -2,7 +2,7 @@ import { useState, useCallback } from 'react';
 import dynamic from 'next/dynamic';
 import classes from './index.module.scss';
 
-const AddModal = dynamic(() => import('@components/AddModal'), {
+const TemplateEditModal = dynamic(() => import('@components/TemplateEditModal'), {
   ssr: false,
 });
 
@@ -22,7 +22,7 @@ const AddArea = () => {
           <p className={classes.add}>增加</p>
         </div>
       </div>
-      <AddModal open={open} onClose={onClose} />
+      <TemplateEditModal open={open} onClose={onClose} />
     </>
   );
 }

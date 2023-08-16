@@ -8,25 +8,36 @@ import { TemplateProps } from '@components/Templates/typing';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import classes from './index.module.scss';
 
-type AddModalProps = {
+type TemplateEditModalProps = {
   open: boolean;
   onClose: VoidFunction;
   uuid?: string;
 }
 
-const AddModal = ({
+const TemplateEditModal = ({
   open,
   onClose,
   uuid,
-} : AddModalProps) => {
+} : TemplateEditModalProps) => {
   const {
     push,
     templatesData,
   } = useTemplate();
-  const [targetIndex, setTargetIndex] = useState<number>(0);
-  const methods = useForm<TemplateProps>();
+  const editMode = useMemo(() => !!uuid, [uuid]);
 
-  const targetTemplate = useMemo(() => templateData[templateIds[targetIndex]], [targetIndex]);
+  const [targetIndex, setTargetIndex] = useState<number>(0);
+
+  const methods = useForm<TemplateProps>({
+    defaultValues: uuid ? templatesData[uuid].props : undefined,
+  });
+
+  const targetTemplate = useMemo(() => {
+    if (uuid) {
+      return templateData[templatesData[uuid].id];
+    }
+    return templateData[templateIds[targetIndex]];
+  }, [uuid, templatesData, targetIndex]);
+
   const props = methods.watch();
 
   const onLeft = useCallback(() => {
@@ -54,36 +65,45 @@ const AddModal = ({
         methods={methods}
         className={classes.form}
         onSubmit={(data) => {
-          push({
-            id: targetTemplate.id,
-            props: data,
-          });
+          if (editMode) {
+            console.log('edit!')
+          } else {
+            push({
+              id: targetTemplate.id,
+              props: data,
+            });
+          }
+
           onClose();
         }}
       >
         <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
         <div className={classes.previewWrapper}>
-          <IconButton
-            type="button"
-            size="large"
-            onClick={onLeft}
-            className={cx(classes.arrowBtn, classes.leftBtn)}
-            disabled={targetIndex === 0}
-          >
-            <Icon icon={ChevronLeftIcon} />
-          </IconButton>
+          {!editMode && (
+            <IconButton
+              type="button"
+              size="large"
+              onClick={onLeft}
+              className={cx(classes.arrowBtn, classes.leftBtn)}
+              disabled={targetIndex === 0}
+            >
+              <Icon icon={ChevronLeftIcon} />
+            </IconButton>
+          )}
           <div className={classes.preview}>
             {targetTemplate.Template({...(props as any)})}
           </div>
-          <IconButton
-            type="button"
-            size="large"
-            onClick={onRight}
-            className={cx(classes.arrowBtn, classes.rightBtn)}
-            disabled={targetIndex === templateIds.length - 1}
-          >
-            <Icon icon={ChevronRightIcon} />
-          </IconButton>
+          {!editMode && (
+            <IconButton
+              type="button"
+              size="large"
+              onClick={onRight}
+              className={cx(classes.arrowBtn, classes.rightBtn)}
+              disabled={targetIndex === templateIds.length - 1}
+            >
+              <Icon icon={ChevronRightIcon} />
+            </IconButton>
+          )}
         </div>
         <div className={classes.fieldsWrapper}>
           {targetTemplate.Editor()}
@@ -97,4 +117,4 @@ const AddModal = ({
   );
 }
 
-export default memo(AddModal);
+export default memo(TemplateEditModal);
