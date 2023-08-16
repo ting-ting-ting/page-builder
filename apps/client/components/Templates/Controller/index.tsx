@@ -1,6 +1,6 @@
 import { ReactNode, Dispatch, SetStateAction } from 'react';
 import { IconButton, Icon, cx } from '@mezzanine-ui/react';
-import { ArrowDownIcon, ArrowUpIcon, DocIcon, TrashIcon } from '@mezzanine-ui/icons';
+import { ArrowDownIcon, ArrowUpIcon, DocIcon, TrashIcon, PlusIcon } from '@mezzanine-ui/icons';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import classes from './index.module.scss';
 
@@ -74,6 +74,11 @@ const Controller = ({
           }}
         >
           <Icon icon={TrashIcon} className={classes.icon} />
+        </IconButton>
+      </div>
+      <div className={classes.plusWrapper}>
+        <IconButton type="button" className={classes.plusBtn}>
+          <Icon icon={PlusIcon} className={classes.plusIcon} />
         </IconButton>
       </div>
     </div>
