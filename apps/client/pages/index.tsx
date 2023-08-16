@@ -1,15 +1,14 @@
+import dynamic from 'next/dynamic';
 import AddArea from '@components/AddArea';
-import { useTemplate } from '@components/Templates/Provider/useTemplate';
+
+const TemplatesContainer = dynamic(() => import('@components/Templates/TemplatesContainer'), {
+  ssr: false,
+});
 
 function Index() {
-  const {
-    templates,
-  } = useTemplate();
-
-  console.log('templates', templates);
-
   return (
     <div>
+      <TemplatesContainer />
       <AddArea />
     </div>
   );

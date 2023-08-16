@@ -26,8 +26,6 @@ const AddModal = ({
   const target = useMemo(() => templateData[targetId], []);
   const props = methods.watch();
 
-  console.log('push', push)
-
   return (
     <Modal
       open={open}
@@ -38,8 +36,12 @@ const AddModal = ({
       <FormFieldsWrapper<TemplateProps>
         methods={methods}
         className={classes.form}
-        onSubmit={data => {
-          console.log('data', data);
+        onSubmit={(data) => {
+          push({
+            id: target.id,
+            props: data,
+          });
+          onClose();
         }}
       >
         <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
@@ -52,7 +54,7 @@ const AddModal = ({
           </div>
         </div>
         <div className={classes.modalFooter}>
-          <Button type="button" variant="contained" size="large">關閉</Button>
+          <Button type="button" variant="contained" size="large" onClick={onClose}>關閉</Button>
           <Button type="submit" variant="contained" size="large">確定</Button>
         </div>
       </FormFieldsWrapper>
