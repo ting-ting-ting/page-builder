@@ -5,12 +5,14 @@ import classes from './index.module.scss';
 type TemplateEditModalProps = {
   open: boolean;
   onClose: VoidFunction;
+  editMode?: boolean;
   uuid?: string;
 }
 
 const TemplateEditModal = ({
   open,
   onClose,
+  editMode,
   uuid,
 } : TemplateEditModalProps) => {
   return (
@@ -20,7 +22,7 @@ const TemplateEditModal = ({
       className={classes.root}
       direction="left"
     >
-      <Form onClose={onClose} uuid={uuid} />
+      <Form onClose={onClose} uuid={uuid} editMode={editMode} />
     </Modal>
   );
 }

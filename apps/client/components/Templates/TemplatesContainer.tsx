@@ -47,6 +47,7 @@ function TemplatesContainer() {
         open={!!editUuid}
         onClose={onClose}
         uuid={editUuid}
+        editMode
       />
     </>
   );

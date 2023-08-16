@@ -10,11 +10,13 @@ import classes from './index.module.scss';
 
 type FormProps = {
   onClose: VoidFunction;
+  editMode?: boolean;
   uuid?: string;
 }
 
 const Form = ({
   onClose,
+  editMode,
   uuid,
 } : FormProps) => {
   const {
@@ -22,18 +24,17 @@ const Form = ({
     edit,
     templatesData,
   } = useTemplate();
-  const editMode = useMemo(() => !!uuid, [uuid]);
 
   const [targetIndex, setTargetIndex] = useState<number>(0);
 
   const targetTemplate = useMemo(() => {
-    if (uuid) {
+    if (editMode && uuid) {
       return templateData[templatesData[uuid].id];
     }
     return templateData[templateIds[targetIndex]];
-  }, [uuid, templatesData, targetIndex]);
+  }, [editMode, uuid, templatesData, targetIndex]);
 
-  const defaultValues = useMemo(() => uuid ? templatesData[uuid].props : targetTemplate.defaultValues, [templatesData, uuid, targetTemplate]);
+  const defaultValues = useMemo(() => (editMode && uuid) ? templatesData[uuid].props : targetTemplate.defaultValues, [templatesData, editMode, uuid, targetTemplate]);
 
   const methods = useForm<TemplateProps>({
     defaultValues,
@@ -59,10 +60,12 @@ const Form = ({
       className={classes.form}
       onSubmit={(data) => {
         if (uuid) {
-          edit({
-            uuid,
-            props,
-          })
+          if (editMode) {
+            edit({
+              uuid,
+              props,
+            });
+          }
         } else {
           push({
             id: targetTemplate.id,
