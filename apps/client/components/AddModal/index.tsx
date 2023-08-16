@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form';
 import FormFieldsWrapper from '@components/Form/FormFieldsWrapper';
 import { templateData, ids } from '@components/Templates/index';
 import { TemplateProps } from '@components/Templates/typing';
+import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import classes from './index.module.scss';
 
 type AddModalProps = {
@@ -17,10 +18,15 @@ const AddModal = ({
   open,
   onClose,
 } : AddModalProps) => {
+  const {
+    push,
+  } = useTemplate();
   const methods = useForm<TemplateProps>();
 
   const target = useMemo(() => templateData[targetId], []);
   const props = methods.watch();
+
+  console.log('push', push)
 
   return (
     <Modal
