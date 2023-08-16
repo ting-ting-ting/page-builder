@@ -72,7 +72,14 @@
       height: 32px;
       background-color: var(--black);
       border-radius: 50%;
+      border: 1px solid var(--black);
       color: #fff;
+
+      &:hover {
+        background-color: #fff;
+        border-color: var(--blue3);
+        color: var(--blue3);
+      }
 
       .plusIcon {
         width: 24px;
