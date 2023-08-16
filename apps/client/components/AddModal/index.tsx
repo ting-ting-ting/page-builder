@@ -1,4 +1,4 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useMemo, useState } from 'react';
 import { Modal, ModalHeader, Button, Icon, IconButton, cx } from '@mezzanine-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@mezzanine-ui/icons';
 import { useForm } from 'react-hook-form';
@@ -20,11 +20,23 @@ const AddModal = ({
   const {
     push,
   } = useTemplate();
-  const [targetIndex] = useState<number>(0);
+  const [targetIndex, setTargetIndex] = useState<number>(0);
   const methods = useForm<TemplateProps>();
 
   const targetTemplate = useMemo(() => templateData[templateIds[targetIndex]], [targetIndex]);
   const props = methods.watch();
+
+  const onLeft = useCallback(() => {
+    if (targetIndex !== 0) {
+      setTargetIndex(i => i - 1);
+    }
+  }, [targetIndex]);
+
+  const onRight = useCallback(() => {
+    if (targetIndex !== templateIds.length - 1) {
+      setTargetIndex(i => i + 1);
+    }
+  }, [targetIndex]);
 
   return (
     <Modal
@@ -47,13 +59,25 @@ const AddModal = ({
         <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
         <div className={classes.modalBody}>
           <div className={classes.previewWrapper}>
-            <IconButton size="large" className={cx(classes.arrowBtn, classes.leftBtn)}>
+            <IconButton
+              type="button"
+              size="large"
+              onClick={onLeft}
+              className={cx(classes.arrowBtn, classes.leftBtn)}
+              disabled={targetIndex === 0}
+            >
               <Icon icon={ChevronLeftIcon} />
             </IconButton>
             <div className={classes.preview}>
               {targetTemplate.Template({...props})}
             </div>
-            <IconButton size="large" className={cx(classes.arrowBtn, classes.rightBtn)}>
+            <IconButton
+              type="button"
+              size="large"
+              onClick={onRight}
+              className={cx(classes.arrowBtn, classes.rightBtn)}
+              disabled={targetIndex === templateIds.length - 1}
+            >
               <Icon icon={ChevronRightIcon} />
             </IconButton>
           </div>
