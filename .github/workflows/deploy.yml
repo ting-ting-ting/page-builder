@@ -23,7 +23,7 @@ jobs:
 
       - name: Build
         run: |
-          nx build client
+          npm run build
           touch out/.nojekyll
 
       - name: Deploy
