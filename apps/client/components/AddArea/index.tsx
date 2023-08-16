@@ -1,10 +1,8 @@
 import { useState, useCallback } from 'react';
-import dynamic from 'next/dynamic';
+import { Icon } from '@mezzanine-ui/react';
+import { PlusIcon } from '@mezzanine-ui/icons';
+import TemplateEditModal from '@components/TemplateEditModal';
 import classes from './index.module.scss';
-
-const TemplateEditModal = dynamic(() => import('@components/TemplateEditModal'), {
-  ssr: false,
-});
 
 const AddArea = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -19,7 +17,7 @@ const AddArea = () => {
         <div className={classes.area} onClick={() => {
           setOpen(s => !s);
         }}>
-          <p className={classes.add}>增加</p>
+          <Icon icon={PlusIcon} className={classes.icon} />
         </div>
       </div>
       <TemplateEditModal open={open} onClose={onClose} />

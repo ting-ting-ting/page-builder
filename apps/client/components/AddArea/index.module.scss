@@ -16,9 +16,8 @@
       background-color: var(--green1);
     }
 
-    .add {
-      @include typo-h3;
-      font-weight: 500;
+    .icon {
+      font-size: 40px;
       color: var(--black);
     }
   }
