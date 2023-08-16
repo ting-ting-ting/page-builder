@@ -8,8 +8,7 @@ const { composePlugins, withNx } = require('@nx/next');
  **/
 const nextConfig = {
   poweredByHeader: false,
-  assetPrefix: "/page-builder/",
-  basePath: "/page-builder",
+  assetPrefix: ".",
   output: 'export',
   nx: {
     svgr: true,

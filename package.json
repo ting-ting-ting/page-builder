@@ -4,8 +4,8 @@
   "license": "MIT",
   "homepage": "https://ting-ting-ting.github.io/page-builder",
   "scripts": {
-    "build": "yarn nx build client",
-    "deploy": "gh-pages -d dist/apps/client/.next/"
+    "build": "yarn nx build client && touch dist/apps/client/.next/.nojekyll",
+    "deploy": "gh-pages -d dist/apps/client/.next/ -t true"
   },
   "private": true,
   "dependencies": {
