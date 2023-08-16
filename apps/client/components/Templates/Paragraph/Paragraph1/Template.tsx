@@ -1,4 +1,4 @@
-import classes from './index.module.scss';
+import classes from './template.module.scss';
 
 const Paragraph1 = () => {
   return (

@@ -1,8 +1,8 @@
 import { Modal, ModalHeader, Button } from '@mezzanine-ui/react';
 import { useForm } from 'react-hook-form';
-import Paragraph1 from '@components/Templates/Paragraph/Paragraph1';
+import Paragraph1 from '@components/Templates/Paragraph/Paragraph1/Template';
 import FormFieldsWrapper from '@components/Form/FormFieldsWrapper';
-import TextAreaField from '@components/Form/TextAreaField';
+import Paragraph1Editor from '@components/Templates/Paragraph/Paragraph1/Editor';
 import classes from './index.module.scss';
 
 type AddModalProps = {
@@ -40,9 +40,7 @@ const AddModal = ({
             <Paragraph1 />
           </div>
           <div className={classes.fieldsWrapper}>
-            <TextAreaField label="段落一" registerName="p1" />
-            <TextAreaField label="段落二" registerName="p2" />
-            <TextAreaField label="段落三" registerName="p3" />
+            <Paragraph1Editor />
           </div>
         </div>
         <div className={classes.modalFooter}>
