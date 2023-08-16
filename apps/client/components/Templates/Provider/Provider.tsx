@@ -65,28 +65,30 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
   }, []);
 
   const onUp = useCallback((uuid: string) => {
-    const currentIndex = templateUuids.findIndex(tUuid => tUuid === uuid);
-    const prevIndex = currentIndex - 1;
-    const array = templateUuids;
+    setTemplateUuids(prevArray => {
+      const currentIndex = prevArray.findIndex(tUuid => tUuid === uuid);
+      const prevIndex = currentIndex - 1;
+      const array = prevArray;
 
-    array[currentIndex] = array[prevIndex];
-    array[prevIndex] = uuid;
+      array[currentIndex] = array[prevIndex];
+      array[prevIndex] = uuid;
 
-    console.log('array', templateUuids, array)
-
-    setTemplateUuids(array);
-  }, [templateUuids]);
+      return [...array];
+    });
+  }, []);
 
   const onDown = useCallback((uuid: string) => {
-    const currentIndex = templateUuids.findIndex(tUuid => tUuid === uuid);
-    const nextIndex = currentIndex + 1;
-    const array = templateUuids;
+    setTemplateUuids(prevArray => {
+      const currentIndex = prevArray.findIndex(tUuid => tUuid === uuid);
+      const nextIndex = currentIndex + 1;
+      const array = prevArray;
 
-    array[currentIndex] = array[nextIndex];
-    array[nextIndex] = uuid;
+      array[currentIndex] = array[nextIndex];
+      array[nextIndex] = uuid;
 
-    setTemplateUuids(array);
-  }, [templateUuids]);
+      return [...array];
+    });
+  }, []);
 
   return (
     <TemplateContextProvider
