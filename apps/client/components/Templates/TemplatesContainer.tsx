@@ -17,7 +17,7 @@ function TemplatesContainer() {
         const TComponent: any = templateData[target.id].Template;
 
         return (
-          <Controller key={index}>
+          <Controller key={index} uuid={uuid}>
             <TComponent {...target.props} />
           </Controller>
         );

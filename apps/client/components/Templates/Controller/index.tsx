@@ -1,15 +1,28 @@
-import { ReactNode } from 'react';
+import { ReactNode, useState, useCallback } from 'react';
+import dynamic from 'next/dynamic';
 import { IconButton, Icon } from '@mezzanine-ui/react';
 import { ArrowDownIcon, ArrowUpIcon, DocIcon } from '@mezzanine-ui/icons';
 import classes from './index.module.scss';
 
+const AddModal = dynamic(() => import('@components/AddModal'), {
+  ssr: false,
+});
+
 type ControllerProps = {
   children: ReactNode;
+  uuid: string;
 }
 
 const Controller = ({
   children,
+  uuid,
 } : ControllerProps) => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const onClose = useCallback(() => {
+    setOpen(false);
+  }, []);
+
   return (
     <div className={classes.root}>
       {children}
