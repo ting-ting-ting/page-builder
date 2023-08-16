@@ -10,7 +10,7 @@ const AddArea = () => {
     <>
       <div className={classes.root}>
         <div className={classes.area}>
-          Area
+          <p className={classes.add}>增加</p>
         </div>
       </div>
       <AddModal />
