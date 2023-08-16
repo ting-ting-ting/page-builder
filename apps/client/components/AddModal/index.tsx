@@ -1,10 +1,9 @@
 import { useMemo } from 'react';
 import { Modal, ModalHeader, Button } from '@mezzanine-ui/react';
 import { useForm } from 'react-hook-form';
-// import Paragraph1 from '@components/Templates/Paragraph/Paragraph1/Template';
 import FormFieldsWrapper from '@components/Form/FormFieldsWrapper';
-// import Paragraph1Editor from '@components/Templates/Paragraph/Paragraph1/Editor';
 import { templateData, ids } from '@components/Templates/index';
+import { TemplateProps } from '@components/Templates/typing';
 import classes from './index.module.scss';
 
 type AddModalProps = {
@@ -18,12 +17,10 @@ const AddModal = ({
   open,
   onClose,
 } : AddModalProps) => {
-  const methods = useForm();
+  const methods = useForm<TemplateProps>();
 
   const target = useMemo(() => templateData[targetId], []);
   const props = methods.watch();
-
-  console.log('templateData', target, props)
 
   return (
     <Modal
@@ -32,7 +29,7 @@ const AddModal = ({
       className={classes.root}
       direction="left"
     >
-      <FormFieldsWrapper
+      <FormFieldsWrapper<TemplateProps>
         methods={methods}
         className={classes.form}
         onSubmit={data => {
