@@ -8,7 +8,7 @@ const { composePlugins, withNx } = require('@nx/next');
  **/
 const nextConfig = {
   poweredByHeader: false,
-  assetPrefix: ".",
+  // assetPrefix: ".",
   output: 'export',
   nx: {
     svgr: true,

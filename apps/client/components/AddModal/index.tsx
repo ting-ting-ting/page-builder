@@ -57,33 +57,31 @@ const AddModal = ({
         }}
       >
         <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
-        <div className={classes.modalBody}>
-          <div className={classes.previewWrapper}>
-            <IconButton
-              type="button"
-              size="large"
-              onClick={onLeft}
-              className={cx(classes.arrowBtn, classes.leftBtn)}
-              disabled={targetIndex === 0}
-            >
-              <Icon icon={ChevronLeftIcon} />
-            </IconButton>
-            <div className={classes.preview}>
-              {targetTemplate.Template({...(props as any)})}
-            </div>
-            <IconButton
-              type="button"
-              size="large"
-              onClick={onRight}
-              className={cx(classes.arrowBtn, classes.rightBtn)}
-              disabled={targetIndex === templateIds.length - 1}
-            >
-              <Icon icon={ChevronRightIcon} />
-            </IconButton>
+        <div className={classes.previewWrapper}>
+          <IconButton
+            type="button"
+            size="large"
+            onClick={onLeft}
+            className={cx(classes.arrowBtn, classes.leftBtn)}
+            disabled={targetIndex === 0}
+          >
+            <Icon icon={ChevronLeftIcon} />
+          </IconButton>
+          <div className={classes.preview}>
+            {targetTemplate.Template({...(props as any)})}
           </div>
-          <div className={classes.fieldsWrapper}>
-            {targetTemplate.Editor()}
-          </div>
+          <IconButton
+            type="button"
+            size="large"
+            onClick={onRight}
+            className={cx(classes.arrowBtn, classes.rightBtn)}
+            disabled={targetIndex === templateIds.length - 1}
+          >
+            <Icon icon={ChevronRightIcon} />
+          </IconButton>
+        </div>
+        <div className={classes.fieldsWrapper}>
+          {targetTemplate.Editor()}
         </div>
         <div className={classes.modalFooter}>
           <Button type="button" variant="contained" size="large" onClick={onClose}>關閉</Button>

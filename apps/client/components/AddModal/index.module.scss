@@ -17,39 +17,38 @@
       padding: 20px var(--grid-system-margin);
     }
 
-    .modalBody {
+    .previewWrapper {
+      display: flex;
+      align-items: center;
+      position: relative;
+      align-self: stretch;
+      height: 400px;
+      border-bottom: 1px solid var(--gray5);
+
+      .preview {
+        flex: 1;
+        overflow-y: auto;
+        height: 100%;
+      }
+
+      .arrowBtn {
+        position: absolute;
+
+        &.leftBtn {
+          left: 20px;
+        }
+
+        &.rightBtn {
+          right: 20px;
+        }
+      }
+    }
+
+    .fieldsWrapper {
       flex: 1;
       align-self: stretch;
-
-      .previewWrapper {
-        display: flex;
-        align-items: center;
-        position: relative;
-        height: 400px;
-        border-bottom: 1px solid var(--gray5);
-
-        .preview {
-          flex: 1;
-          overflow-y: auto;
-          height: 100%;
-        }
-
-        .arrowBtn {
-          position: absolute;
-
-          &.leftBtn {
-            left: 20px;
-          }
-
-          &.rightBtn {
-            right: 20px;
-          }
-        }
-      }
-
-      .fieldsWrapper {
-        padding: 40px var(--grid-system-margin);
-      }
+      padding: 40px var(--grid-system-margin);
+      overflow-y: auto;
     }
 
     .modalFooter {

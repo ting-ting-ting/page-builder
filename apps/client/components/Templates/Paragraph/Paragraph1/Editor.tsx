@@ -1,8 +1,9 @@
 import TextAreaField from '@components/Form/TextAreaField';
+import classes from './editor.module.scss';
 
 const Paragraph1Editor = () => {
   return (
-    <div>
+    <div className={classes.root}>
       <TextAreaField
         label="段落一"
         registerName="p1"
