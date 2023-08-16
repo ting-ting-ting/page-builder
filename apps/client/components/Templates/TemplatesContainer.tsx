@@ -3,17 +3,19 @@ import { templateData } from '@components/Templates/index';
 
 function TemplatesContainer() {
   const {
-    templates,
+    templateUuids,
+    templatesData,
   } = useTemplate();
 
-  console.log('templates', templates);
+  console.log('templates', templateUuids, templatesData);
 
   return (
     <div>
-      {templates.map((t, index) => {
-        const TComponent: any = templateData[t.id].Template;
+      {templateUuids.map((uuid, index) => {
+        const target = templatesData[uuid];
+        const TComponent: any = templateData[target.id].Template;
 
-        return <TComponent key={index} {...t.props} />;
+        return <TComponent key={index} {...target.props} />;
       })}
     </div>
   );

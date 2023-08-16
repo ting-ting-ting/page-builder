@@ -11,16 +11,20 @@ export type TemplateContextValues = {
     id: TemplateIdEnum;
     props: TemplateProps;
   }) => void;
-  templates: {
-    id: TemplateIdEnum;
-    uid: string;
-    props: TemplateProps;
-  }[];
+  templateUuids: string[];
+  templatesData: {
+    [uuid: string]: {
+      id: TemplateIdEnum;
+      uuid: string;
+      props: TemplateProps;
+    };
+  };
 };
 
 export const TemplateContext = createContext<TemplateContextValues>({
   push: () => {},
-  templates: [],
+  templateUuids: [],
+  templatesData: {},
 });
 
 export const TemplateContextProvider = TemplateContext.Provider;

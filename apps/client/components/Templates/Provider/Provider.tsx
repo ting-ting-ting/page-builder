@@ -1,4 +1,4 @@
-import { useCallback, useState, ReactNode } from 'react';
+import { useCallback, useState, useMemo, ReactNode } from 'react';
 import moment from 'moment';
 import { uniqueId } from 'lodash';
 import { TemplateContextProvider } from './Context';
@@ -8,7 +8,7 @@ import { TemplateProps } from '../typing';
 const TemplateProvider = ({ children } : { children: ReactNode }) => {
   const [templates, setTemplates] = useState<{
     id: TemplateIdEnum;
-    uid: string;
+    uuid: string;
     props: TemplateProps;
   }[]>([]);
 
@@ -23,17 +23,24 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
       ...prevState,
       {
         id,
-        uid: uniqueId(`${moment().valueOf()}-`),
+        uuid: uniqueId(`${moment().valueOf()}-`),
         props,
       },
     ]);
   }, []);
 
+  const templateUuids = useMemo(() => templates.map(t => t.uuid), [templates]);
+  const templatesData = useMemo(() => templates.reduce((prev, curr) => ({
+    ...prev,
+    [curr.uuid]: curr,
+  }), {}), [templates]);
+
   return (
     <TemplateContextProvider
       value={{
         push,
-        templates,
+        templateUuids,
+        templatesData,
       }}
     >
       {children}
