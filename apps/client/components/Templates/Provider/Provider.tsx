@@ -39,6 +39,37 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
     }));
   }, []);
 
+  const pushUnderUuid = useCallback(({
+    id,
+    uuid,
+    props
+  } : {
+    id: TemplateIdEnum;
+    uuid: string;
+    props: TemplateProps;
+  }) => {
+    const currentUuid = uniqueId(`${moment().valueOf()}-`);
+
+    setTemplateUuids(prevState => {
+      const targetIndex = prevState.findIndex(s => s === uuid);
+
+      return [
+        ...prevState.slice(0, targetIndex + 1),
+        currentUuid,
+        ...prevState.slice(targetIndex + 1),
+      ];
+    });
+
+    setTemplatesData(prevState => ({
+      ...prevState,
+      [currentUuid]: {
+        id,
+        uuid: currentUuid,
+        props,
+      },
+    }));
+  }, []);
+
   const edit = useCallback(({
     uuid,
     props
@@ -97,6 +128,7 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
     <TemplateContextProvider
       value={{
         push,
+        pushUnderUuid,
         edit,
         remove,
         onUp,

@@ -21,6 +21,7 @@ const Form = ({
 } : FormProps) => {
   const {
     push,
+    pushUnderUuid,
     edit,
     templatesData,
   } = useTemplate();
@@ -64,6 +65,12 @@ const Form = ({
             edit({
               uuid,
               props,
+            });
+          } else {
+            pushUnderUuid({
+              id: targetTemplate.id,
+              uuid,
+              props: data,
             });
           }
         } else {

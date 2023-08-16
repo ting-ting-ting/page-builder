@@ -11,6 +11,15 @@ export type TemplateContextValues = {
     id: TemplateIdEnum;
     props: TemplateProps;
   }) => void;
+  pushUnderUuid: ({
+    id,
+    uuid,
+    props,
+  } : {
+    id: TemplateIdEnum;
+    uuid: string;
+    props: TemplateProps;
+  }) => void;
   edit: ({
     uuid,
     props,
@@ -33,6 +42,7 @@ export type TemplateContextValues = {
 
 export const TemplateContext = createContext<TemplateContextValues>({
   push: () => {},
+  pushUnderUuid: () => {},
   edit: () => {},
   remove: () => {},
   onUp: () => {},
