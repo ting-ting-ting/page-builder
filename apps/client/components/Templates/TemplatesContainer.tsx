@@ -11,7 +11,7 @@ function TemplatesContainer() {
   return (
     <div>
       {templates.map((t, index) => {
-        const TComponent = templateData[t.id].Template;
+        const TComponent: any = templateData[t.id].Template;
 
         return <TComponent key={index} {...t.props} />;
       })}

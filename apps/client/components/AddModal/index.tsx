@@ -69,7 +69,7 @@ const AddModal = ({
               <Icon icon={ChevronLeftIcon} />
             </IconButton>
             <div className={classes.preview}>
-              {targetTemplate.Template({...props})}
+              {targetTemplate.Template({...(props as any)})}
             </div>
             <IconButton
               type="button"
