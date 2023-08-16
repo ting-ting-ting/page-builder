@@ -1,5 +1,6 @@
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import { templateData } from '@components/Templates/index';
+import Controller from './Controller';
 
 function TemplatesContainer() {
   const {
@@ -15,7 +16,11 @@ function TemplatesContainer() {
         const target = templatesData[uuid];
         const TComponent: any = templateData[target.id].Template;
 
-        return <TComponent key={index} {...target.props} />;
+        return (
+          <Controller key={index}>
+            <TComponent {...target.props} />
+          </Controller>
+        );
       })}
     </div>
   );

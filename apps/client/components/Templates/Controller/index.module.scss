@@ -1,0 +1,40 @@
+.root {
+  position: relative;
+  cursor: pointer;
+
+  &:hover {
+    .controllerWrapper {
+      display: flex;
+    }
+  }
+
+  .controllerWrapper {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    gap: 20px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(22, 22, 22, 0.5);
+
+    .actionBtn {
+      width: 80px;
+      height: 80px;
+      color: #fff;
+      background-color: transparent;
+
+      &:hover {
+        .icon {
+          color: var(--blue3);
+        }
+      }
+
+      .icon {
+        font-size: 52px;
+      }
+    }
+  }
+}
