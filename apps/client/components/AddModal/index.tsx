@@ -47,7 +47,7 @@ const AddModal = ({
         <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
         <div className={classes.modalBody}>
           <div className={classes.previewWrapper}>
-           {target.Template({...props})}
+            {target.Template({...props})}
           </div>
           <div className={classes.fieldsWrapper}>
             {target.Editor()}
