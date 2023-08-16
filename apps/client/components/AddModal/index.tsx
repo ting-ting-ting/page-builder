@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState } from 'react';
+import { useCallback, useMemo, useState, memo } from 'react';
 import { Modal, ModalHeader, Button, Icon, IconButton, cx } from '@mezzanine-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@mezzanine-ui/icons';
 import { useForm } from 'react-hook-form';
@@ -11,14 +11,17 @@ import classes from './index.module.scss';
 type AddModalProps = {
   open: boolean;
   onClose: VoidFunction;
+  uuid?: string;
 }
 
 const AddModal = ({
   open,
   onClose,
+  uuid,
 } : AddModalProps) => {
   const {
     push,
+    templatesData,
   } = useTemplate();
   const [targetIndex, setTargetIndex] = useState<number>(0);
   const methods = useForm<TemplateProps>();
@@ -37,6 +40,8 @@ const AddModal = ({
       setTargetIndex(i => i + 1);
     }
   }, [targetIndex]);
+
+  console.log('templatesData', templatesData)
 
   return (
     <Modal
@@ -92,4 +97,4 @@ const AddModal = ({
   );
 }
 
-export default AddModal;
+export default memo(AddModal);

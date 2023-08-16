@@ -1,33 +1,31 @@
-import { ReactNode, useState, useCallback } from 'react';
-import dynamic from 'next/dynamic';
+import { ReactNode, Dispatch, SetStateAction } from 'react';
 import { IconButton, Icon } from '@mezzanine-ui/react';
 import { ArrowDownIcon, ArrowUpIcon, DocIcon } from '@mezzanine-ui/icons';
 import classes from './index.module.scss';
 
-const AddModal = dynamic(() => import('@components/AddModal'), {
-  ssr: false,
-});
-
 type ControllerProps = {
   children: ReactNode;
   uuid: string;
+  setEditUuid: Dispatch<SetStateAction<string>>;
 }
 
 const Controller = ({
   children,
   uuid,
+  setEditUuid,
 } : ControllerProps) => {
-  const [open, setOpen] = useState<boolean>(false);
-
-  const onClose = useCallback(() => {
-    setOpen(false);
-  }, []);
-
   return (
     <div className={classes.root}>
       {children}
       <div className={classes.controllerWrapper}>
-        <IconButton type="button" size="large" className={classes.actionBtn}>
+        <IconButton
+          type="button"
+          size="large"
+          className={classes.actionBtn}
+          onClick={() => {
+            setEditUuid(uuid);
+          }}
+        >
           <Icon icon={DocIcon} className={classes.icon} />
         </IconButton>
         <IconButton type="button" size="large" className={classes.actionBtn}>
