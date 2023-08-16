@@ -1,8 +1,8 @@
 import { Modal, ModalHeader, Button } from '@mezzanine-ui/react';
 import { useForm } from 'react-hook-form';
-import Paragraph1 from '@components/Templates/Paragraph/Paragraph1/Template';
+// import Paragraph1 from '@components/Templates/Paragraph/Paragraph1/Template';
 import FormFieldsWrapper from '@components/Form/FormFieldsWrapper';
-import Paragraph1Editor from '@components/Templates/Paragraph/Paragraph1/Editor';
+// import Paragraph1Editor from '@components/Templates/Paragraph/Paragraph1/Editor';
 import classes from './index.module.scss';
 
 type AddModalProps = {
@@ -14,11 +14,7 @@ const AddModal = ({
   open,
   onClose,
 } : AddModalProps) => {
-  const methods = useForm<{
-    p1: string;
-    p2: string;
-    p3: string;
-  }>();
+  const methods = useForm();
 
   return (
     <Modal
@@ -37,10 +33,10 @@ const AddModal = ({
         <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
         <div className={classes.modalBody}>
           <div className={classes.previewWrapper}>
-            <Paragraph1 />
+            {/* <Paragraph1 /> */}
           </div>
           <div className={classes.fieldsWrapper}>
-            <Paragraph1Editor />
+            {/* <Paragraph1Editor /> */}
           </div>
         </div>
         <div className={classes.modalFooter}>
