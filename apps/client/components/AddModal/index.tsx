@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 // import Paragraph1 from '@components/Templates/Paragraph/Paragraph1/Template';
 import FormFieldsWrapper from '@components/Form/FormFieldsWrapper';
 // import Paragraph1Editor from '@components/Templates/Paragraph/Paragraph1/Editor';
+import { templateData } from '@components/Templates/index';
 import classes from './index.module.scss';
 
 type AddModalProps = {
@@ -15,6 +16,8 @@ const AddModal = ({
   onClose,
 } : AddModalProps) => {
   const methods = useForm();
+
+  console.log('templateData', templateData)
 
   return (
     <Modal
