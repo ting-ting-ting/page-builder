@@ -16,6 +16,8 @@
     "@nx/next": "16.7.0",
     "classnames": "^2.3.2",
     "gh-pages": "^6.0.0",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^2.5.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.4",
     "next": "13.4.1",
