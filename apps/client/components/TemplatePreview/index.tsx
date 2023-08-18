@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { Loading } from '@mezzanine-ui/react';
 import Link from 'next/link';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
@@ -9,6 +10,7 @@ import classes from './index.module.scss';
 
 function TemplatePreview() {
   const pdfRef = useRef<HTMLDivElement>(null);
+  const [loading, setLoading] = useState<boolean>(false);
 
   const {
     templateUuids,
@@ -16,6 +18,7 @@ function TemplatePreview() {
   } = useTemplate();
 
   const download = () => {
+    setLoading(true);
     const input = pdfRef.current;
 
     if (input) {
@@ -27,10 +30,11 @@ function TemplatePreview() {
         const imageWidth = canvas.width;
         const imageHeight = canvas.height;
         const ratio = Math.min(pdfWidth / imageWidth, pdfHeight / imageHeight);
-        // const imageX = (pdfWidth - imageWidth * ratio) / 2;
+        const imageX = (pdfWidth - imageWidth * ratio) / 2;
         // const imageY = 40;
-        pdf.addImage(imageData, 'PNG', 0, 0, imageWidth * ratio, imageHeight * ratio);
+        pdf.addImage(imageData, 'PNG', imageX, 0, imageWidth * ratio, imageHeight * ratio);
         pdf.save('page.pdf');
+        setLoading(false);
       });
     }
   }
@@ -54,8 +58,17 @@ function TemplatePreview() {
         <Link href="/" replace className={classes.btn}>
           <span className={classes.text}>Back</span>
         </Link>
-        <button type="button" onClick={download} className={classes.btn} disabled={templateUuids.length === 0}>
-          <span className={classes.text}>Download</span>
+        <button
+          type="button"
+          onClick={download}
+          className={classes.btn}
+          disabled={templateUuids.length === 0 || loading}
+        >
+          {loading ? (
+            <Loading loading />
+          ) : (
+            <span className={classes.text}>Download</span>
+          )}
         </button>
       </div>
     </>
