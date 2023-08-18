@@ -5,7 +5,7 @@ const GoToPreviewLink = () => {
   return (
     <div className={classes.root}>
       <Link href="/preview" className={classes.link}>
-        <span className={classes.text}>Preview and you can DOWNLOAD HTML</span>
+        <span className={classes.text}>Preview</span>
       </Link>
     </div>
   );

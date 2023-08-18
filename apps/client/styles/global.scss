@@ -76,3 +76,11 @@ a {
     color: var(--green4);
   }
 }
+
+button {
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

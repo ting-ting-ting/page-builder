@@ -1,15 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import Link from 'next/link';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
-import { useRouter } from 'next/navigation';
 import { templateData } from '@components/Templates/index';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import classes from './index.module.scss';
 
 function TemplatePreview() {
-  const { replace } = useRouter();
   const pdfRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -49,11 +47,12 @@ function TemplatePreview() {
           );
         })}
       </div>
+      <div className={classes.emptyArea} />
       <div className={classes.btnWrapper}>
         <Link href="/" className={classes.btn}>
           <span className={classes.text}>Back</span>
         </Link>
-        <button type="button" onClick={download} className={classes.btn}>
+        <button type="button" onClick={download} className={classes.btn} disabled={templateUuids.length === 0}>
           <span className={classes.text}>Download</span>
         </button>
       </div>
