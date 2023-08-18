@@ -10,13 +10,28 @@ const Paragraph1Template = ({
     <div className={classes.root}>
       <div className={classes.container}>
         <div className={classes.paragraphWrapper}>
-          <p className={classes.text}>{p1}</p>
+          <p
+            className={classes.text}
+            dangerouslySetInnerHTML={{
+              __html: p1.replace(/(\r\n|\n)/g, "<br />"),
+            }}
+          />
         </div>
         <div className={classes.paragraphWrapper}>
-          <p className={classes.text}>{p2}</p>
+          <p
+            className={classes.text}
+            dangerouslySetInnerHTML={{
+              __html: p2.replace(/(\r\n|\n)/g, "<br />"),
+            }}
+          />
         </div>
         <div className={classes.paragraphWrapper}>
-          <p className={classes.text}>{p3}</p>
+          <p
+            className={classes.text}
+            dangerouslySetInnerHTML={{
+              __html: p3.replace(/(\r\n|\n)/g, "<br />"),
+            }}
+          />
         </div>
       </div>
     </div>
