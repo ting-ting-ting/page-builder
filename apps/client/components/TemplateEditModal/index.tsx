@@ -1,6 +1,7 @@
-import { useState, useCallback, useMemo } from 'react';
+import { useState, useCallback, useEffect, useMemo } from 'react';
 import { Modal, Select, Option, cx } from '@mezzanine-ui/react';
 import { templateCategories, TemplateCategoryIdType, templateIds, templateData } from '@components/Templates';
+import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import Form from './Form';
 import classes from './index.module.scss';
 
@@ -17,6 +18,10 @@ const TemplateEditModal = ({
   editMode,
   uuid,
 } : TemplateEditModalProps) => {
+  const {
+    templatesData,
+  } = useTemplate();
+
   const [targetCategoryId, setTargetCategoryId] = useState<TemplateCategoryIdType>(templateCategories[0].id);
   const [targetIndex, setTargetIndex] = useState<number>(0);
 
@@ -29,6 +34,23 @@ const TemplateEditModal = ({
     setTargetIndex(0);
   }, []);
 
+  const targetUuidTemplate = useMemo(() => {
+    if (editMode && uuid) {
+      return templateData[templatesData[uuid].id];
+    }
+    return null;
+  }, [editMode, uuid, templatesData]);
+
+  useEffect(() => {
+    if (targetUuidTemplate && open) {
+      const uuidCategoryId = targetUuidTemplate.category;
+      const uuidIndex = templateIds[uuidCategoryId].findIndex(id => id === targetUuidTemplate.id);
+
+      setTargetCategoryId(uuidCategoryId);
+      setTargetIndex(uuidIndex);
+    }
+  }, [targetUuidTemplate, open]);
+
   return (
     <Modal
       open={open}
@@ -38,44 +60,40 @@ const TemplateEditModal = ({
     >
       <div className={classes.modalHeader}>
         <span className={classes.modalTitle}>選擇模板</span>
-        {!editMode && (
-          <Select
-            onChange={(op) => {
-              onChangeCategory(op.id as TemplateCategoryIdType);
-            }}
-            value={targetCategory}
-          >
-            {templateCategories?.map((option) => (
-              <Option key={option.id} value={option.id}>
-                {option.name}
-              </Option>
-            ))}
-          </Select>
-        )}
+        <Select
+          onChange={(op) => {
+            onChangeCategory(op.id as TemplateCategoryIdType);
+          }}
+          value={targetCategory}
+        >
+          {templateCategories?.map((option) => (
+            <Option key={option.id} value={option.id}>
+              {option.name}
+            </Option>
+          ))}
+        </Select>
       </div>
-      {!editMode && (
-        <div className={classes.previewBtnContainer}>
-          <div className={classes.previewBtnWrapper}>
-            {targetIds.map((id, index) => {
-              const PreviewComponent = templateData[id].Preview;
+      <div className={classes.previewBtnContainer}>
+        <div className={classes.previewBtnWrapper}>
+          {targetIds.map((id, index) => {
+            const PreviewComponent = templateData[id].Preview;
 
-              return (
-                <div
-                  key={id}
-                  className={cx(classes.previewBtn, {
-                    [classes.active]: index === targetIndex,
-                  })}
-                  onClick={() => {
-                    setTargetIndex(index);
-                  }}
-                >
-                  <PreviewComponent/>
-                </div>
-              );
-            })}
-          </div>
+            return (
+              <div
+                key={id}
+                className={cx(classes.previewBtn, {
+                  [classes.active]: index === targetIndex,
+                })}
+                onClick={() => {
+                  setTargetIndex(index);
+                }}
+              >
+                <PreviewComponent/>
+              </div>
+            );
+          })}
         </div>
-      )}
+      </div>
       <Form
         key={`${targetCategoryId}-${targetIndex}-${uuid ?? 'create'}`}
         targetCategoryId={targetCategoryId}

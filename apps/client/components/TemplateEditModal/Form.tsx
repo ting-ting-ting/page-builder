@@ -32,14 +32,15 @@ const Form = ({
     templatesData,
   } = useTemplate();
 
-  const targetTemplate = useMemo(() => {
-    if (editMode && uuid) {
-      return templateData[templatesData[uuid].id];
-    }
-    return templateData[templateIds[targetCategoryId][targetIndex]];
-  }, [editMode, uuid, templatesData, targetCategoryId, targetIndex]);
+  const targetTemplate = useMemo(() => templateData[templateIds[targetCategoryId][targetIndex]], [targetCategoryId, targetIndex]);
 
-  const defaultValues = useMemo(() => (editMode && uuid) ? templatesData[uuid].props : targetTemplate.defaultValues, [templatesData, editMode, uuid, targetTemplate]);
+  const defaultValues = useMemo(() => {
+    if (editMode && uuid && templatesData[uuid].id === targetTemplate.id) {
+      return templatesData[uuid].props;
+    }
+
+    return targetTemplate.defaultValues;
+  }, [templatesData, editMode, uuid, targetTemplate]);
 
   const methods = useForm<TemplateProps>({
     defaultValues,
@@ -67,6 +68,7 @@ const Form = ({
         if (uuid) {
           if (editMode) {
             edit({
+              id: targetTemplate.id,
               uuid,
               props,
             });
@@ -88,31 +90,27 @@ const Form = ({
       }}
     >
       <div className={classes.previewWrapper}>
-        {!editMode && (
-          <IconButton
-            type="button"
-            size="large"
-            onClick={onLeft}
-            className={cx(classes.arrowBtn, classes.leftBtn)}
-            disabled={targetIndex === 0}
-          >
-            <Icon icon={ChevronLeftIcon} />
-          </IconButton>
-        )}
+        <IconButton
+          type="button"
+          size="large"
+          onClick={onLeft}
+          className={cx(classes.arrowBtn, classes.leftBtn)}
+          disabled={targetIndex === 0}
+        >
+          <Icon icon={ChevronLeftIcon} />
+        </IconButton>
         <div className={classes.preview}>
           {targetTemplate.Template({...(props as any)})}
         </div>
-        {!editMode && (
-          <IconButton
-            type="button"
-            size="large"
-            onClick={onRight}
-            className={cx(classes.arrowBtn, classes.rightBtn)}
-            disabled={targetIndex === templateIds[targetCategoryId].length - 1}
-          >
-            <Icon icon={ChevronRightIcon} />
-          </IconButton>
-        )}
+        <IconButton
+          type="button"
+          size="large"
+          onClick={onRight}
+          className={cx(classes.arrowBtn, classes.rightBtn)}
+          disabled={targetIndex === templateIds[targetCategoryId].length - 1}
+        >
+          <Icon icon={ChevronRightIcon} />
+        </IconButton>
       </div>
       <div className={classes.fieldsContainer}>
         <div className={classes.fieldsWrapper}>

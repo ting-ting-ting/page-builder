@@ -21,9 +21,11 @@ export type TemplateContextValues = {
     props: TemplateProps;
   }) => void;
   edit: ({
+    id,
     uuid,
     props,
   } : {
+    id: TemplateIdEnum;
     uuid: string;
     props: TemplateProps;
   }) => void;

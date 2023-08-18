@@ -71,9 +71,11 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
   }, []);
 
   const edit = useCallback(({
+    id,
     uuid,
     props
   } : {
+    id: TemplateIdEnum;
     uuid: string;
     props: TemplateProps;
   }) => {
@@ -81,6 +83,7 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
       ...prevState,
       [uuid]: {
         ...prevState[uuid],
+        id,
         props,
       },
     }));
