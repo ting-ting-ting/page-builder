@@ -51,7 +51,7 @@ const TemplateEditModal = ({
           ))}
         </Select>
       </div>
-      <div className={classes.previewWrapper}>
+      <div className={classes.previewBtnWrapper}>
         {targetIds.map((id, index) => {
           const PreviewComponent = templateData[id].Preview;
 
