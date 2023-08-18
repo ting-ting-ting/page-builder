@@ -37,15 +37,17 @@ function TemplatePreview() {
 
   return (
     <>
-      <div ref={pdfRef} className={classes.root}>
-        {templateUuids.map((uuid) => {
-          const target = templatesDataWithUuid[uuid];
-          const TComponent: any = templateData[target.id].Template;
+      <div className={classes.root}>
+        <div ref={pdfRef} className={classes.paper}>
+          {templateUuids.map((uuid) => {
+            const target = templatesDataWithUuid[uuid];
+            const TComponent: any = templateData[target.id].Template;
 
-          return (
-            <TComponent key={uuid} {...target.props} />
-          );
-        })}
+            return (
+              <TComponent key={uuid} {...target.props} />
+            );
+          })}
+        </div>
       </div>
       <div className={classes.emptyArea} />
       <div className={classes.btnWrapper}>

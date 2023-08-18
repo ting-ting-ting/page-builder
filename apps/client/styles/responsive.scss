@@ -34,7 +34,12 @@ $mob0: 0;
   }
 };
 
-/** desktop優先 */
+@mixin mediaQueryOn($LBound) {
+  @media all and (min-width: #{$LBound}px) {
+    @content
+  }
+};
+
 @mixin mediaQueryUnder($UBoundPlus1) {
   @media all and (max-width: #{$UBoundPlus1 - 1}px) {
     @content

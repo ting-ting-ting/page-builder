@@ -2,6 +2,26 @@
 @import '@styles/typography.scss';
 @import '@styles/responsive.scss';
 
+.root {
+  @include mediaQueryOn($pc1440) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  .paper {
+    @include mediaQueryOn($pc1440) {
+      width: 1440px;
+
+      & > div {
+        padding-left: 80px;
+        padding-right: 80px;
+      }
+    }
+  }
+}
+
 .emptyArea {
   width: 100%;
   height: 200px;
