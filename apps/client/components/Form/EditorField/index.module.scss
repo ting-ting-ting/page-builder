@@ -11,6 +11,8 @@
   }
 
   .editor {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     align-self: stretch;
     min-width: unset;
