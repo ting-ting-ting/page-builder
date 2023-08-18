@@ -1,4 +1,3 @@
-import { useMemo } from 'react';
 import Quill from 'react-quill';
 import { useFormContext, useFormState, useWatch } from 'react-hook-form';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
@@ -7,20 +6,20 @@ import classes from './index.module.scss';
 
 export type EditorFieldProps = RegisteredFieldProps<HookFormFieldType> & {
   label?: string;
+  placeholder?: string;
   defaultValue?: string;
 };
 
 const EditorField = ({
   control,
   label,
+  placeholder,
   defaultValue,
-  register,
   registerName,
 } : EditorFieldProps) => {
   const {
     control: contextControl,
     setValue,
-    register: contextRegister,
   } = useFormContext();
 
   const watchValue =
@@ -32,14 +31,6 @@ const EditorField = ({
 
   const { errors } = useFormState({ control: control || contextControl });
 
-  const registration = useMemo(
-    () =>
-      (register || contextRegister)(
-        registerName,
-      ),
-    [register, contextRegister, registerName]
-  );
-
   return (
     <div className={classes.root}>
       {label && (
@@ -47,6 +38,10 @@ const EditorField = ({
       )}
       <Quill
         className={classes.editor}
+        placeholder={placeholder}
+        modules={{
+          toolbar: [['bold', 'italic', 'underline', 'link']],
+        }}
         onChange={value => {
           setValue(registerName, value);
         }}
