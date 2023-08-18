@@ -6,15 +6,12 @@ const Paragraph3Editor = () => {
   return (
     <div className={classes.root}>
       <div className={cx(classes.fieldWrapper, classes.s1Wrapper)}>
-        <EditorField
-          label="段落一"
-          registerName="p1"
-        />
+
       </div>
       <div className={cx(classes.fieldWrapper, classes.s2Wrapper)}>
         <EditorField
           label="段落二"
-          registerName="p2"
+          registerName="paragraph3_p"
         />
       </div>
     </div>

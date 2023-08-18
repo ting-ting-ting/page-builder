@@ -1,4 +1,4 @@
 export type Paragraph3Type = {
-  p1: string;
-  p2: string;
+  paragraph3_image: string;
+  paragraph3_p: string;
 }

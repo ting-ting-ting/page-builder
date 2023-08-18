@@ -2,25 +2,20 @@ import { Paragraph3Type } from './typing';
 import classes from './template.module.scss';
 
 const Paragraph3Template = ({
-  p1,
-  p2,
+  paragraph3_image,
+  paragraph3_p,
 } : Paragraph3Type) => {
   return (
     <div className={classes.root}>
       <div className={classes.container}>
         <div className={classes.s1Wrapper}>
-          <p
-            className={classes.text}
-            dangerouslySetInnerHTML={{
-              __html: p1.replace(/(\r\n|\n)/g, "<br />"),
-            }}
-          />
+          {paragraph3_image}
         </div>
         <div className={classes.s2Wrapper}>
           <p
             className={classes.text}
             dangerouslySetInnerHTML={{
-              __html: p2.replace(/(\r\n|\n)/g, "<br />"),
+              __html: paragraph3_p?.replace(/(\r\n|\n)/g, "<br />"),
             }}
           />
         </div>

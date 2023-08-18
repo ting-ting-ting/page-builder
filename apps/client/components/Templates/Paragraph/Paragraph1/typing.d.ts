@@ -1,5 +1,5 @@
 export type Paragraph1Type = {
-  p1: string;
-  p2: string;
-  p3: string;
+  paragraph1_p1: string;
+  paragraph1_p2: string;
+  paragraph1_p3: string;
 }

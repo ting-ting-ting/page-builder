@@ -7,19 +7,19 @@ const Paragraph1Editor = () => {
       <div className={classes.fieldWrapper}>
         <EditorField
           label="段落一"
-          registerName="p1"
+          registerName="paragraph1_p1"
         />
       </div>
       <div className={classes.fieldWrapper}>
         <EditorField
           label="段落二"
-          registerName="p2"
+          registerName="paragraph1_p2"
         />
       </div>
       <div className={classes.fieldWrapper}>
         <EditorField
           label="段落三"
-          registerName="p3"
+          registerName="paragraph1_p3"
         />
       </div>
     </div>

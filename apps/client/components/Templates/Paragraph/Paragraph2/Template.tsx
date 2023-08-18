@@ -2,8 +2,8 @@ import { Paragraph2Type } from './typing';
 import classes from './template.module.scss';
 
 const Paragraph2Template = ({
-  p1,
-  p2,
+  paragraph2_p1,
+  paragraph2_p2,
 } : Paragraph2Type) => {
   return (
     <div className={classes.root}>
@@ -12,7 +12,7 @@ const Paragraph2Template = ({
           <p
             className={classes.text}
             dangerouslySetInnerHTML={{
-              __html: p1.replace(/(\r\n|\n)/g, "<br />"),
+              __html: paragraph2_p1?.replace(/(\r\n|\n)/g, "<br />"),
             }}
           />
         </div>
@@ -20,7 +20,7 @@ const Paragraph2Template = ({
           <p
             className={classes.text}
             dangerouslySetInnerHTML={{
-              __html: p2.replace(/(\r\n|\n)/g, "<br />"),
+              __html: paragraph2_p2?.replace(/(\r\n|\n)/g, "<br />"),
             }}
           />
         </div>
