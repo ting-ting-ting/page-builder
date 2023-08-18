@@ -51,6 +51,13 @@ const TemplateEditModal = ({
     }
   }, [targetUuidTemplate, open]);
 
+  useEffect(() => {
+    if (!open) {
+      setTargetCategoryId(templateCategories[0].id);
+      setTargetIndex(0);
+    }
+  }, [open])
+
   return (
     <Modal
       open={open}
