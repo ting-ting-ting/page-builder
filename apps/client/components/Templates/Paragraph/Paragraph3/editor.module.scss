@@ -1,0 +1,20 @@
+@import '@styles/responsive.scss';
+
+.root {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  height: 100%;
+
+  .fieldWrapper {
+    height: 100%;
+
+    &.s1Wrapper {
+      width: gs-columns-width(4);
+    }
+
+    &.s2Wrapper {
+      width: gs-columns-width(8);
+    }
+  }
+}
