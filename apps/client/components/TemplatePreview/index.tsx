@@ -38,7 +38,7 @@ function TemplatePreview() {
         const imageX = (pdfWidth - imageWidth * ratio) / 2;
         const imageY = 30;
         pdf.addImage(imageData, 'PNG', imageX, imageY, imageWidth * ratio, imageHeight * ratio);
-        pdf.save('ting.pdf');
+        pdf.save('page.pdf');
       });
     }
   }
@@ -55,7 +55,11 @@ function TemplatePreview() {
           );
         })}
       </div>
-      <button type="button" onClick={download}>download</button>
+      <div className={classes.btnWrapper}>
+        <button type="button" onClick={download} className={classes.btn}>
+          <span className={classes.text}>download</span>
+        </button>
+      </div>
     </>
   );
 }
