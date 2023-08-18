@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Textarea, TextareaProps } from '@mezzanine-ui/react';
-import { useFormContext, useFormState, useWatch } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
 import classes from './index.module.scss';
 
@@ -9,12 +9,10 @@ export type TextAreaFieldProps = TextareaProps & RegisteredFieldProps<HookFormFi
 };
 
 const TextAreaField = ({
-  className,
   clearable,
   control,
   defaultValue,
   disabled,
-  fullWidth = true,
   label,
   maxLength,
   placeholder = "請輸入",
@@ -25,7 +23,6 @@ const TextAreaField = ({
 } : TextAreaFieldProps) => {
   const {
     control: contextControl,
-    setValue,
     register: contextRegister,
   } = useFormContext();
 
@@ -35,8 +32,6 @@ const TextAreaField = ({
       name: registerName as string,
       defaultValue,
     }) || "";
-
-  const { errors } = useFormState({ control: control || contextControl });
 
   const registration = useMemo(
     () =>

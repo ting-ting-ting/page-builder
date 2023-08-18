@@ -1,5 +1,5 @@
 import Quill from 'react-quill';
-import { useFormContext, useFormState, useWatch } from 'react-hook-form';
+import { useFormContext, useWatch } from 'react-hook-form';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
 import 'quill/dist/quill.snow.css';
 import classes from './index.module.scss';
@@ -29,8 +29,6 @@ const EditorField = ({
       defaultValue,
     }) || "";
 
-  const { errors } = useFormState({ control: control || contextControl });
-
   return (
     <div className={classes.root}>
       {label && (
@@ -40,7 +38,13 @@ const EditorField = ({
         className={classes.editor}
         placeholder={placeholder}
         modules={{
-          toolbar: [['bold', 'italic', 'underline', 'link']],
+          toolbar: [['bold', 'italic', 'underline', 'link'], [{ list: 'ordered' }, { list: 'bullet' }]],
+          clipboard: {
+            matchVisual: false,
+          },
+          history: {
+            maxStack: 0,
+          },
         }}
         onChange={value => {
           setValue(registerName, value);
