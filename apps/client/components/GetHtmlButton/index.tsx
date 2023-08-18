@@ -24,7 +24,6 @@ const GetHtmlButton = () => {
       const html = renderToString(
         <html>
           <head>
-            <link rel="stylesheet" type="text/css" href="./all.css" />
           </head>
           <body>
             <div>{components}</div>
