@@ -45,12 +45,13 @@ const TemplateEditModal = ({
         </Select>
       </div>
       <Form
-        key={`${targetIndex}-${uuid ?? 'create'}`}
+        key={`${targetCategoryId}-${targetIndex}-${uuid ?? 'create'}`}
+        targetCategoryId={targetCategoryId}
+        targetIndex={targetIndex}
+        setTargetIndex={setTargetIndex}
         onClose={onClose}
         uuid={uuid}
         editMode={editMode}
-        targetIndex={targetIndex}
-        setTargetIndex={setTargetIndex}
       />
     </Modal>
   );

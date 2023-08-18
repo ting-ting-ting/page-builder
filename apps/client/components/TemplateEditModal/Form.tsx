@@ -9,6 +9,7 @@ import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import classes from './index.module.scss';
 
 type FormProps = {
+  targetCategoryId: string;
   targetIndex: number;
   setTargetIndex: Dispatch<SetStateAction<number>>;
   onClose: VoidFunction;
@@ -17,6 +18,7 @@ type FormProps = {
 }
 
 const Form = ({
+  targetCategoryId,
   targetIndex,
   setTargetIndex,
   onClose,
