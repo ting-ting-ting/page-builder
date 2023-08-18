@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { templateData } from '@components/Templates/index';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 
 function TemplatePreview() {
-  const { replace } = useRouter();
   const {
     templateUuids,
     templatesDataWithUuid,
@@ -13,9 +11,12 @@ function TemplatePreview() {
 
   useEffect(() => {
     if (templateUuids.length === 0) {
-      replace('/');
+      const link = document.createElement('a');
+      link.href = '/page-builder';
+      document.body.appendChild(link);
+      link.click();
     }
-  }, [templateUuids, replace]);
+  }, [templateUuids]);
 
   return (
     <div>
