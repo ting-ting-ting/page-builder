@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Modal } from '@mezzanine-ui/react';
+import { Modal, ModalHeader } from '@mezzanine-ui/react';
 import Form from './Form';
 import classes from './index.module.scss';
 
@@ -25,6 +25,7 @@ const TemplateEditModal = ({
       className={classes.root}
       direction="left"
     >
+      <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
       <Form
         key={`${targetIndex}-${uuid ?? 'create'}`}
         onClose={onClose}

@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useState, memo, Dispatch, SetStateAction } from 'react';
-import { ModalHeader, Button, Icon, IconButton, cx } from '@mezzanine-ui/react';
+import { useCallback, useMemo, memo, Dispatch, SetStateAction } from 'react';
+import { Button, Icon, IconButton, cx } from '@mezzanine-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@mezzanine-ui/icons';
 import { useForm } from 'react-hook-form';
 import FormFieldsWrapper from '@components/Form/FormFieldsWrapper';
@@ -85,7 +85,6 @@ const Form = ({
         onClose();
       }}
     >
-      <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
       <div className={classes.previewWrapper}>
         {!editMode && (
           <IconButton
