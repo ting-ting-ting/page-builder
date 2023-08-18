@@ -4,6 +4,7 @@
 const { composePlugins, withNx } = require('@nx/next');
 
 const isProduction = process.env.NODE_ENV === 'production';
+const basePath = isProduction ? '/page-builder' : undefined;
 
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
@@ -11,7 +12,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const nextConfig = {
   poweredByHeader: false,
   assetPrefix: isProduction ? '.' : undefined,
-  basePath: isProduction ? '/page-builder' : undefined,
+  basePath,
   output: 'export',
   nx: {
     svgr: true,

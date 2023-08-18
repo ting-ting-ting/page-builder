@@ -2,11 +2,13 @@
 import { useEffect, useRef } from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { useRouter } from 'next/navigation';
 import { templateData } from '@components/Templates/index';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import classes from './index.module.scss';
 
 function TemplatePreview() {
+  const { replace } = useRouter();
   const pdfRef = useRef<HTMLDivElement>(null);
 
   const {
@@ -16,12 +18,9 @@ function TemplatePreview() {
 
   useEffect(() => {
     if (templateUuids.length === 0) {
-      const link = document.createElement('a');
-      link.href = '/page-builder';
-      document.body.appendChild(link);
-      link.click();
+      replace('/?')
     }
-  }, [templateUuids]);
+  }, [templateUuids, replace]);
 
   const download = () => {
     const input = pdfRef.current;
@@ -41,6 +40,10 @@ function TemplatePreview() {
         pdf.save('page.pdf');
       });
     }
+  }
+
+  if (templateUuids.length === 0) {
+    return null;
   }
 
   return (
