@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-head-element */
+/* eslint-disable @next/next/no-css-tags */
 import { renderToString } from 'react-dom/server';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import { templateData } from '@components/Templates/index';
@@ -19,9 +21,28 @@ const GetHtmlButton = () => {
           <TComponent key={index} {...target.props} />
         );
       });
-      const html = renderToString(<div>{components}</div>);
+      const html = renderToString(
+        <html>
+          <head>
+            <link rel="stylesheet" type="text/css" href="./all.css" />
+          </head>
+          <body>
+            <div>{components}</div>
+          </body>
+        </html>
+      );
 
-      console.log('html', html)
+      const blob = new Blob([html], { type: 'text/html' });
+      const url = URL.createObjectURL(blob);
+      const tempEl = document.createElement("a");
+      document.body.appendChild(tempEl);
+      tempEl.href = url;
+      tempEl.download = "thispage.html";
+      tempEl.click();
+      setTimeout(() => {
+        URL.revokeObjectURL(url);
+        tempEl.parentNode?.removeChild(tempEl);
+      }, 2000);
     }
   }
 

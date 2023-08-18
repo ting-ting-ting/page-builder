@@ -9,6 +9,10 @@ const AddArea = dynamic(() => import('@components/AddArea'), {
   ssr: false,
 });
 
+const GetHtmlButton = dynamic(() => import('@components/GetHtmlButton'), {
+  ssr: false,
+});
+
 function Index() {
   const {
     templateUuids,
@@ -21,6 +25,7 @@ function Index() {
       ) : (
         <AddArea />
       )}
+      <GetHtmlButton />
     </div>
   );
 }
