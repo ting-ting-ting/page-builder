@@ -8,7 +8,6 @@ const GoToPreviewLink = () => {
         <span className={classes.text}>GO to preview and DOWNLOAD HTML</span>
       </Link>
     </div>
-
   );
 }
 

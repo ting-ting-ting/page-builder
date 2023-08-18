@@ -3,7 +3,12 @@
 @import '@styles/responsive.scss';
 
 .root {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
   padding: 36px var(--grid-system-margin);
+  z-index: 10;
 
   .link {
     display: flex;

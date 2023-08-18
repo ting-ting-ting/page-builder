@@ -28,7 +28,7 @@ function TemplatesContainer() {
 
   return (
     <>
-      <div>
+      <div style={{ paddingBottom: 200 }}>
         {templateUuids.map((uuid, index) => {
           const target = templatesDataWithUuid[uuid];
           const TComponent: any = templateData[target.id].Template;
