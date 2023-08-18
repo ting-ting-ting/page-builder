@@ -50,7 +50,7 @@ const UploadImageField = ({
         <div className={classes.iconWrapper}>
           <Icon className={classes.icon} icon={PlusIcon} />
         </div>
-        <span className={classes.text}>上傳檔案</span>
+        <span className={classes.text}>上傳圖片</span>
         <input
           ref={inputRef}
           accept="image/*"
