@@ -1,7 +1,14 @@
+@import '@styles/responsive.scss';
+
 .root {
   position: relative;
 
   &:hover {
+    @include mediaQueryOn($pc1440) {
+      border-right: 1px solid var(--gray4);
+      border-left: 1px solid var(--gray4);
+    }
+
     &::before {
       content: "";
       position: absolute;
@@ -26,6 +33,10 @@
     left: var(--grid-system-margin);
     background-color: #fff;
     border: 1px solid var(--gray2);
+
+    @include mediaQueryOn($pc1440) {
+      left: 0;
+    }
 
     .actionBtn {
       width: 40px;

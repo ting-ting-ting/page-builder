@@ -1,6 +1,5 @@
 import dynamic from 'next/dynamic';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
-import GoToPreviewLink from '@components/GoToPreviewLink';
 
 const TemplatesContainer = dynamic(() => import('@components/TemplatesContainer'), {
   ssr: false,
@@ -20,7 +19,6 @@ function Index() {
       {templateUuids.length > 0 ? (
         <>
           <TemplatesContainer />
-          <GoToPreviewLink />
         </>
       ) : (
         <AddArea />

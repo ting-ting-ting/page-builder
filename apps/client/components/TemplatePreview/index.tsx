@@ -1,77 +1,24 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useRef, useState } from 'react';
-import { Loading } from '@mezzanine-ui/react';
-import Link from 'next/link';
-import html2canvas from 'html2canvas';
-import jsPDF from 'jspdf';
 import { templateData } from '@components/Templates/index';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
-import classes from './index.module.scss';
 
 function TemplatePreview() {
-  const pdfRef = useRef<HTMLDivElement>(null);
-  const [loading, setLoading] = useState<boolean>(false);
-
   const {
     templateUuids,
     templatesDataWithUuid,
   } = useTemplate();
 
-  const download = () => {
-    setLoading(true);
-    const input = pdfRef.current;
-
-    if (input) {
-      html2canvas(input).then(canvas => {
-        const imageData = canvas.toDataURL('image/png');
-        const pdf = new jsPDF('p', 'mm', 'a4', true);
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        const imageWidth = canvas.width;
-        const imageHeight = canvas.height;
-        const ratio = Math.min(pdfWidth / imageWidth, pdfHeight / imageHeight);
-        const imageX = (pdfWidth - imageWidth * ratio) / 2;
-        // const imageY = 40;
-        pdf.addImage(imageData, 'PNG', imageX, 0, imageWidth * ratio, imageHeight * ratio);
-        pdf.save('page.pdf');
-        setLoading(false);
-      });
-    }
-  }
-
   return (
-    <>
-      <div className={classes.root}>
-        <div ref={pdfRef} className={classes.paper}>
-          {templateUuids.map((uuid) => {
-            const target = templatesDataWithUuid[uuid];
-            const TComponent: any = templateData[target.id].Template;
+    <div>
+      {templateUuids.map((uuid) => {
+        const target = templatesDataWithUuid[uuid];
+        const TComponent: any = templateData[target.id].Template;
 
-            return (
-              <TComponent key={uuid} {...target.props} />
-            );
-          })}
-        </div>
-      </div>
-      <div className={classes.emptyArea} />
-      <div className={classes.btnWrapper}>
-        <Link href="/" replace className={classes.btn}>
-          <span className={classes.text}>Back</span>
-        </Link>
-        <button
-          type="button"
-          onClick={download}
-          className={classes.btn}
-          disabled={templateUuids.length === 0 || loading}
-        >
-          {loading ? (
-            <Loading loading />
-          ) : (
-            <span className={classes.text}>Download</span>
-          )}
-        </button>
-      </div>
-    </>
+        return (
+          <TComponent key={uuid} {...target.props} />
+        );
+      })}
+    </div>
   );
 }
 
