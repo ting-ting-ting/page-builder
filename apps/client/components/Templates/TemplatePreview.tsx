@@ -10,12 +10,12 @@ function TemplatePreview() {
 
   return (
     <div>
-      {templateUuids.map((uuid, index) => {
+      {templateUuids.map((uuid) => {
         const target = templatesDataWithUuid[uuid];
         const TComponent: any = templateData[target.id].Template;
 
         return (
-          <TComponent key={index} {...target.props} />
+          <TComponent key={uuid} {...target.props} />
         );
       })}
     </div>

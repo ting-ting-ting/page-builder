@@ -35,7 +35,7 @@ function TemplatesContainer() {
 
           return (
             <Controller
-              key={index}
+              key={uuid}
               uuid={uuid}
               setEditUuid={setEditUuid}
               setPushUuid={setPushUuid}
