@@ -1,5 +1,5 @@
 import { useState, useCallback, useMemo } from 'react';
-import { Modal, Select, Option } from '@mezzanine-ui/react';
+import { Modal, Select, Option, cx } from '@mezzanine-ui/react';
 import { templateCategories, TemplateCategoryIdType, templateIds, templateData } from '@components/Templates';
 import Form from './Form';
 import classes from './index.module.scss';
@@ -51,22 +51,26 @@ const TemplateEditModal = ({
           ))}
         </Select>
       </div>
-      <div className={classes.previewBtnWrapper}>
-        {targetIds.map((id, index) => {
-          const PreviewComponent = templateData[id].Preview;
+      <div className={classes.previewBtnContainer}>
+        <div className={classes.previewBtnWrapper}>
+          {targetIds.map((id, index) => {
+            const PreviewComponent = templateData[id].Preview;
 
-          return (
-            <div
-              key={id}
-              className={classes.previewBtn}
-              onClick={() => {
-                setTargetIndex(index);
-              }}
-            >
-              <PreviewComponent/>
-            </div>
-          );
-        })}
+            return (
+              <div
+                key={id}
+                className={cx(classes.previewBtn, {
+                  [classes.active]: index === targetIndex,
+                })}
+                onClick={() => {
+                  setTargetIndex(index);
+                }}
+              >
+                <PreviewComponent/>
+              </div>
+            );
+          })}
+        </div>
       </div>
       <Form
         key={`${targetCategoryId}-${targetIndex}-${uuid ?? 'create'}`}

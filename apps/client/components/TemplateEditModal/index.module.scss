@@ -1,3 +1,4 @@
+@use '@styles/transition.scss';
 @import '@styles/typography.scss';
 @import '@styles/responsive.scss';
 
@@ -26,22 +27,37 @@
     }
   }
 
-  .previewBtnWrapper {
+  .previewBtnContainer {
     display: flex;
-    align-items: center;
-    justify-content: flex-start;
     align-self: stretch;
-    width: 100%;
     overflow-y: hidden;
     overflow-x: auto;
-    padding: 0 var(--grid-system-margin);
-    height: 60px;
-    gap: 8px;
     border-bottom: 1px solid var(--gray5);
+    height: 60px;
 
-    .previewBtn {
-      border: 1px solid var(--gray5);
-      cursor: pointer;
+    .previewBtnWrapper {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0 var(--grid-system-margin);
+      height: 100%;
+      gap: 8px;
+
+      .previewBtn {
+        border: 1px solid var(--gray5);
+        cursor: pointer;
+        background-color: #fff;
+        transition: transition.standard(border), transition.standard(background-color);
+
+        &:hover {
+          border-color: var(--black);
+          background-color: var(--green1);
+        }
+
+        &.active {
+          border-color: var(--green3);
+        }
+      }
     }
   }
 
