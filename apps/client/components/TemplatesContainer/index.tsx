@@ -75,7 +75,6 @@ function TemplatesContainer() {
                 <div className={classes.templateWrapper}>
                   <TComponent {...target.props} />
                 </div>
-
               </Controller>
             );
           })}
@@ -83,7 +82,7 @@ function TemplatesContainer() {
       </div>
       <div className={classes.emptyArea} />
       <div className={classes.btnWrapper}>
-        <Link href="/preview" replace className={classes.btn}>
+        <Link href="/preview" className={classes.btn}>
           <span className={classes.text}>Preview</span>
         </Link>
         <button
