@@ -37,7 +37,6 @@
         font-size: 24px;
         color: var(--gray5);
         transition: transition.standard(color);
-
       }
     }
 
@@ -48,4 +47,11 @@
       transition: transition.standard(color);
     }
   }
+}
+
+.hint {
+  @include typo-body3;
+  font-weight: 500;
+  color:var(--black);
+  margin-top: 10px;
 }

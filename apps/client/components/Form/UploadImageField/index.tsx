@@ -8,12 +8,14 @@ import classes from './index.module.scss';
 
 export type UploadImageFieldProps = RegisteredFieldProps<HookFormFieldType> & {
   label?: string;
+  hint?: string;
 };
 
 const UploadImageField = ({
   label,
   control,
   registerName,
+  hint,
 } : UploadImageFieldProps) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
@@ -39,40 +41,43 @@ const UploadImageField = ({
   };
 
   return (
-    <div className={classes.root}>
-      <button
-        type="button"
-        className={classes.uploadBtn}
-        onClick={() => {
-          inputRef.current?.click();
-        }}
-      >
-        <div className={classes.iconWrapper}>
-          <Icon className={classes.icon} icon={PlusIcon} />
-        </div>
-        <span className={classes.text}>上傳圖片</span>
-        <input
-          ref={inputRef}
-          accept="image/*"
-          className={classes.input}
-          onClick={(event) => {
-            // eslint-disable-next-line no-param-reassign
-            event.currentTarget.value = '';
-            event.stopPropagation();
-            event.nativeEvent.stopImmediatePropagation();
+    <>
+      <div className={classes.root}>
+        <button
+          type="button"
+          className={classes.uploadBtn}
+          onClick={() => {
+            inputRef.current?.click();
           }}
-          onChange={(event) => {
-            const { files } = event.target;
+        >
+          <div className={classes.iconWrapper}>
+            <Icon className={classes.icon} icon={PlusIcon} />
+          </div>
+          <span className={classes.text}>上傳圖片</span>
+          <input
+            ref={inputRef}
+            accept="image/*"
+            className={classes.input}
+            onClick={(event) => {
+              // eslint-disable-next-line no-param-reassign
+              event.currentTarget.value = '';
+              event.stopPropagation();
+              event.nativeEvent.stopImmediatePropagation();
+            }}
+            onChange={(event) => {
+              const { files } = event.target;
 
-            if (files) {
-              onUpload(files[0]);
-            }
-          }}
-          type="file"
-          style={{ position: 'absolute', width: 0 }}
-        />
-      </button>
-    </div>
+              if (files) {
+                onUpload(files[0]);
+              }
+            }}
+            type="file"
+            style={{ position: 'absolute', width: 0 }}
+          />
+        </button>
+      </div>
+      <p className={classes.hint}>{hint}</p>
+    </>
   );
 };
 

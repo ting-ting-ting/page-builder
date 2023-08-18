@@ -10,6 +10,7 @@ const Paragraph3Editor = () => {
         <UploadImageField
           label="圖"
           registerName="paragraph3_image"
+          hint="建議尺寸: 900px X 600px"
         />
       </div>
       <div className={cx(classes.fieldWrapper, classes.s2Wrapper)}>
