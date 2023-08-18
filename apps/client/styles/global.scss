@@ -1,3 +1,4 @@
+@use './transition.scss';
 @import './palette.scss';
 @import './responsive.scss';
 @import './mezzanine.scss';
@@ -63,5 +64,15 @@ body {
   -ms-overflow-style: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+}
+
+a {
+  color: var(--green3);
+  text-decoration: underline;
+  transition: transition.standard(color);
+
+  &:hover {
+    color: var(--green4);
   }
 }
