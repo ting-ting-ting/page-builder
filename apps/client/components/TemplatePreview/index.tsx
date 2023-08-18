@@ -49,7 +49,7 @@ function TemplatePreview() {
       </div>
       <div className={classes.emptyArea} />
       <div className={classes.btnWrapper}>
-        <Link href="/" className={classes.btn}>
+        <Link href="/" replace className={classes.btn}>
           <span className={classes.text}>Back</span>
         </Link>
         <button type="button" onClick={download} className={classes.btn} disabled={templateUuids.length === 0}>
