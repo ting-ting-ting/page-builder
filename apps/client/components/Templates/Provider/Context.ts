@@ -33,7 +33,7 @@ export type TemplateContextValues = {
   onUp: (uuid: string) => void;
   onDown: (uuid: string) => void;
   templateUuids: string[];
-  templatesData: {
+  templatesDataWithUuid: {
     [uuid: string]: {
       id: TemplateIdEnum;
       uuid: string;
@@ -50,7 +50,7 @@ export const TemplateContext = createContext<TemplateContextValues>({
   onUp: () => {},
   onDown: () => {},
   templateUuids: [],
-  templatesData: {},
+  templatesDataWithUuid: {},
 });
 
 export const TemplateContextProvider = TemplateContext.Provider;

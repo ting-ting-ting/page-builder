@@ -6,13 +6,13 @@ import classes from './index.module.scss';
 const GetHtmlButton = () => {
   const {
     templateUuids,
-    templatesData,
+    templatesDataWithUuid,
   } = useTemplate();
 
   const get = () => {
     if (typeof document !== undefined) {
       const components = templateUuids.map((uuid, index) => {
-        const target = templatesData[uuid];
+        const target = templatesDataWithUuid[uuid];
         const TComponent: any = templateData[target.id].Template;
 
         return (

@@ -29,18 +29,18 @@ const Form = ({
     push,
     pushUnderUuid,
     edit,
-    templatesData,
+    templatesDataWithUuid,
   } = useTemplate();
 
   const targetTemplate = useMemo(() => templateData[templateIds[targetCategoryId][targetIndex]], [targetCategoryId, targetIndex]);
 
   const defaultValues = useMemo(() => {
-    if (editMode && uuid && templatesData[uuid].id === targetTemplate.id) {
-      return templatesData[uuid].props;
+    if (editMode && uuid && templatesDataWithUuid[uuid].id === targetTemplate.id) {
+      return templatesDataWithUuid[uuid].props;
     }
 
     return targetTemplate.defaultValues;
-  }, [templatesData, editMode, uuid, targetTemplate]);
+  }, [templatesDataWithUuid, editMode, uuid, targetTemplate]);
 
   const methods = useForm<TemplateProps>({
     defaultValues,

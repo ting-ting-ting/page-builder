@@ -11,7 +11,7 @@ const TemplateEditModal = dynamic(() => import('@components/TemplateEditModal'),
 function TemplatesContainer() {
   const {
     templateUuids,
-    templatesData,
+    templatesDataWithUuid,
   } = useTemplate();
 
   const [editUuid, setEditUuid] = useState<string>('');
@@ -25,14 +25,11 @@ function TemplatesContainer() {
     setPushUuid('');
   }, []);
 
-  console.log('templates', templateUuids, templatesData);
-  console.log('editUuid', editUuid)
-
   return (
     <>
       <div>
         {templateUuids.map((uuid, index) => {
-          const target = templatesData[uuid];
+          const target = templatesDataWithUuid[uuid];
           const TComponent: any = templateData[target.id].Template;
 
           return (

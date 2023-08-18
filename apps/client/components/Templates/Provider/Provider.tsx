@@ -7,7 +7,7 @@ import { TemplateProps } from '../typing';
 
 const TemplateProvider = ({ children } : { children: ReactNode }) => {
   const [templateUuids, setTemplateUuids] = useState<string[]>([]);
-  const [templatesData, setTemplatesData] = useState<{
+  const [templatesDataWithUuid, setTemplatesDataWithUuid] = useState<{
     [uuid: string]: {
       id: TemplateIdEnum;
       uuid: string;
@@ -29,7 +29,7 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
       currentUuid,
     ]);
 
-    setTemplatesData(prevState => ({
+    setTemplatesDataWithUuid(prevState => ({
       ...prevState,
       [currentUuid]: {
         id,
@@ -60,7 +60,7 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
       ];
     });
 
-    setTemplatesData(prevState => ({
+    setTemplatesDataWithUuid(prevState => ({
       ...prevState,
       [currentUuid]: {
         id,
@@ -79,7 +79,7 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
     uuid: string;
     props: TemplateProps;
   }) => {
-    setTemplatesData(prevState => ({
+    setTemplatesDataWithUuid(prevState => ({
       ...prevState,
       [uuid]: {
         ...prevState[uuid],
@@ -98,7 +98,7 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
         ...prevState.slice(targetIndex + 1),
       ];
     });
-    setTemplatesData(prevState => omit(prevState, uuid));
+    setTemplatesDataWithUuid(prevState => omit(prevState, uuid));
   }, []);
 
   const onUp = useCallback((uuid: string) => {
@@ -137,7 +137,7 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
         onUp,
         onDown,
         templateUuids,
-        templatesData,
+        templatesDataWithUuid,
       }}
     >
       {children}

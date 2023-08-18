@@ -19,7 +19,7 @@ const TemplateEditModal = ({
   uuid,
 } : TemplateEditModalProps) => {
   const {
-    templatesData,
+    templatesDataWithUuid,
   } = useTemplate();
 
   const [targetCategoryId, setTargetCategoryId] = useState<TemplateCategoryIdType>(templateCategories[0].id);
@@ -36,10 +36,10 @@ const TemplateEditModal = ({
 
   const targetUuidTemplate = useMemo(() => {
     if (editMode && uuid) {
-      return templateData[templatesData[uuid].id];
+      return templateData[templatesDataWithUuid[uuid].id];
     }
     return null;
-  }, [editMode, uuid, templatesData]);
+  }, [editMode, uuid, templatesDataWithUuid]);
 
   useEffect(() => {
     if (targetUuidTemplate && open) {
