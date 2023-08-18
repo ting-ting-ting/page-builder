@@ -1,0 +1,30 @@
+@use '@styles/transition.scss';
+@import '@styles/typography.scss';
+@import '@styles/responsive.scss';
+
+.root {
+  padding: 36px var(--grid-system-margin);
+
+  .link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: gs-columns-width(8);
+    height: 60px;
+    border: 1px solid var(--green4);
+    margin: 0 auto;
+    text-decoration: none;
+    background-color: #fff;
+    transition: transition.standard(background-color);
+
+    &:hover {
+      background-color: var(--green15);
+    }
+
+    .text {
+      @include typo-h3;
+      font-weight: 500;
+      color: var(--green4);
+    }
+  }
+}
