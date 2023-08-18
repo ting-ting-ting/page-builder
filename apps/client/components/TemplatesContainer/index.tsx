@@ -47,7 +47,6 @@ function TemplatesContainer() {
         const imageHeight = canvas.height;
         const ratio = Math.min(pdfWidth / imageWidth, pdfHeight / imageHeight);
         const imageX = (pdfWidth - imageWidth * ratio) / 2;
-        // const imageY = 40;
         pdf.addImage(imageData, 'PNG', imageX, 0, imageWidth * ratio, imageHeight * ratio);
         pdf.save('page.pdf');
         setLoading(false);
@@ -72,9 +71,7 @@ function TemplatesContainer() {
                 canNotUp={index === 0}
                 canNotDown={index === templateUuids.length - 1}
               >
-                <div className={classes.templateWrapper}>
-                  <TComponent {...target.props} />
-                </div>
+               <TComponent {...target.props} />
               </Controller>
             );
           })}
@@ -85,7 +82,7 @@ function TemplatesContainer() {
         <Link href="/preview" className={classes.btn}>
           <span className={classes.text}>Preview</span>
         </Link>
-        <button
+        {/* <button
           type="button"
           onClick={download}
           className={classes.btn}
@@ -96,7 +93,7 @@ function TemplatesContainer() {
           ) : (
             <span className={classes.text}>Download</span>
           )}
-        </button>
+        </button> */}
       </div>
       <TemplateEditModal
         open={!!editUuid}

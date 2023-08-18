@@ -4,10 +4,10 @@
   position: relative;
 
   &:hover {
-    @include mediaQueryOn($pc1440) {
-      border-right: 1px solid var(--gray4);
-      border-left: 1px solid var(--gray4);
-    }
+    // @include mediaQueryOn($pc1440) {
+    //   border-right: 1px solid var(--gray4);
+    //   border-left: 1px solid var(--gray4);
+    // }
 
     &::before {
       content: "";
@@ -34,9 +34,9 @@
     background-color: #fff;
     border: 1px solid var(--gray2);
 
-    @include mediaQueryOn($pc1440) {
-      left: 0;
-    }
+    // @include mediaQueryOn($pc1440) {
+    //   left: 0;
+    // }
 
     .actionBtn {
       width: 40px;
