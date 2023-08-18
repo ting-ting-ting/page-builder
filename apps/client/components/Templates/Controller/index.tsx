@@ -1,7 +1,8 @@
 import { ReactNode, Dispatch, SetStateAction } from 'react';
 import { IconButton, Icon, cx } from '@mezzanine-ui/react';
-import { ArrowDownIcon, ArrowUpIcon, DocIcon, TrashIcon, PlusIcon } from '@mezzanine-ui/icons';
+import { ArrowDownIcon, ArrowUpIcon, TrashIcon, PlusIcon } from '@mezzanine-ui/icons';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
+import { EditIcon } from '@public/icons/edit';
 import classes from './index.module.scss';
 
 type ControllerProps = {
@@ -39,7 +40,7 @@ const Controller = ({
             setEditUuid(uuid);
           }}
         >
-          <Icon icon={DocIcon} className={classes.icon} />
+          <Icon icon={EditIcon} className={classes.icon} />
         </IconButton>
         <IconButton
           type="button"
