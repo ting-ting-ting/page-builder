@@ -3,9 +3,14 @@
 @import '@styles/responsive.scss';
 
 .btnWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
   padding: 36px var(--grid-system-margin);
+  gap: 20px;
 
   .btn {
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;

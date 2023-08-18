@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useRef } from 'react';
+import Link from 'next/link';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { useRouter } from 'next/navigation';
@@ -15,12 +16,6 @@ function TemplatePreview() {
     templateUuids,
     templatesDataWithUuid,
   } = useTemplate();
-
-  useEffect(() => {
-    if (templateUuids.length === 0) {
-      replace('/?')
-    }
-  }, [templateUuids, replace]);
 
   const download = () => {
     const input = pdfRef.current;
@@ -42,10 +37,6 @@ function TemplatePreview() {
     }
   }
 
-  if (templateUuids.length === 0) {
-    return null;
-  }
-
   return (
     <>
       <div ref={pdfRef} className={classes.root}>
@@ -59,8 +50,11 @@ function TemplatePreview() {
         })}
       </div>
       <div className={classes.btnWrapper}>
+        <Link href="/" className={classes.btn}>
+          <span className={classes.text}>Back</span>
+        </Link>
         <button type="button" onClick={download} className={classes.btn}>
-          <span className={classes.text}>download</span>
+          <span className={classes.text}>Download</span>
         </button>
       </div>
     </>
