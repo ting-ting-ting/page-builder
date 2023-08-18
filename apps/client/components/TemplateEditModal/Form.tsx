@@ -1,4 +1,4 @@
-import { useCallback, useMemo, useState, memo } from 'react';
+import { useCallback, useMemo, useState, memo, Dispatch, SetStateAction } from 'react';
 import { ModalHeader, Button, Icon, IconButton, cx } from '@mezzanine-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@mezzanine-ui/icons';
 import { useForm } from 'react-hook-form';
@@ -9,12 +9,16 @@ import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import classes from './index.module.scss';
 
 type FormProps = {
+  targetIndex: number;
+  setTargetIndex: Dispatch<SetStateAction<number>>;
   onClose: VoidFunction;
   editMode?: boolean;
   uuid?: string;
 }
 
 const Form = ({
+  targetIndex,
+  setTargetIndex,
   onClose,
   editMode,
   uuid,
@@ -25,8 +29,6 @@ const Form = ({
     edit,
     templatesData,
   } = useTemplate();
-
-  const [targetIndex, setTargetIndex] = useState<number>(0);
 
   const targetTemplate = useMemo(() => {
     if (editMode && uuid) {
@@ -47,13 +49,13 @@ const Form = ({
     if (targetIndex !== 0) {
       setTargetIndex(i => i - 1);
     }
-  }, [targetIndex]);
+  }, [targetIndex, setTargetIndex]);
 
   const onRight = useCallback(() => {
     if (targetIndex !== templateIds.length - 1) {
       setTargetIndex(i => i + 1);
     }
-  }, [targetIndex]);
+  }, [targetIndex, setTargetIndex]);
 
   return (
     <FormFieldsWrapper<TemplateProps>
