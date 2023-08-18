@@ -56,7 +56,13 @@ const TemplateEditModal = ({
           const PreviewComponent = templateData[id].Preview;
 
           return (
-            <div key={id} className={classes.previewBtn}>
+            <div
+              key={id}
+              className={classes.previewBtn}
+              onClick={() => {
+                setTargetIndex(index);
+              }}
+            >
               <PreviewComponent/>
             </div>
           );
