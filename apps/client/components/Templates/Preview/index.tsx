@@ -36,13 +36,13 @@ const Preview = ({
   };
   return (
     <div className={classes.root} style={{...cssVars}}>
-      {items.map(i => {
+      {items.map((i, index) => {
         switch (i) {
           case PARAGRAPH_PREVIEW_TYPE:
-            return <div className={classes.paragraphItem} />;
+            return <div key={index} className={classes.paragraphItem} />;
 
           case IMAGE_PREVIEW_TYPE:
-            return <div className={classes.imageItem} />;
+            return <div key={index} className={classes.imageItem} />;
 
           default:
             return null;
