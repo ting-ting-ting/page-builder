@@ -1,5 +1,5 @@
 import { image1Index } from './Image1/index';
-import { ImageIdEnum } from './enum';
+import { ImageIdEnum } from './share';
 
 export const imageIndex = {
   ...image1Index,

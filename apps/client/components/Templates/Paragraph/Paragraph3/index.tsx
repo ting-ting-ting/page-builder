@@ -1,7 +1,7 @@
 import Editor from './Editor';
 import Template from './Template';
 import Preview from './Preview';
-import { ParagraphIdEnum } from '../enum';
+import { ParagraphIdEnum } from '../share';
 import { Paragraph3Type } from './typing';
 
 export const paragraph3Index: {

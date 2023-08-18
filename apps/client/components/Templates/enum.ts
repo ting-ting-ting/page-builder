@@ -1,4 +1,4 @@
-import { ParagraphIdEnum } from './Paragraph/enum';
-import { ImageIdEnum } from './Image/enum';
+import { ParagraphIdEnum } from './Paragraph/share';
+import { ImageIdEnum } from './Image/share';
 
 export type TemplateIdEnum = ParagraphIdEnum | ImageIdEnum;

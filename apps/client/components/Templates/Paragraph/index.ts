@@ -1,7 +1,7 @@
 import { paragraph1Index } from './Paragraph1/index';
 import { paragraph2Index } from './Paragraph2/index';
 import { paragraph3Index } from './Paragraph3/index';
-import { ParagraphIdEnum } from './enum';
+import { ParagraphIdEnum } from './share';
 
 export const paragraphIndex = {
   ...paragraph1Index,

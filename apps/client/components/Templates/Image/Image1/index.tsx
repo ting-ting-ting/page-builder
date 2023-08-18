@@ -1,7 +1,7 @@
 import Editor from './Editor';
 import Template from './Template';
 import Preview from './Preview';
-import { ImageIdEnum } from '../enum';
+import { ImageIdEnum } from '../share';
 import { Image1Type } from './typing';
 
 export const image1Index: {
