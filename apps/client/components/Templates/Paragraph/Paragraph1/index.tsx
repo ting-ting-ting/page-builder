@@ -1,20 +1,19 @@
 import Editor from './Editor';
 import Template from './Template';
 import Preview from './Preview';
-import { ParagraphIdEnum } from '../share';
+import { ParagraphIdEnum, PARAGRAPH_CATEGORY } from '../share';
 import { Paragraph1Type } from './typing';
+import { ParagraphBaseDataType } from '../typing';
 
 export const paragraph1Index: {
-  [ParagraphIdEnum.PARAGRAPH_1]: {
-    id: ParagraphIdEnum.PARAGRAPH_1;
-    Editor: () => JSX.Element;
+  [ParagraphIdEnum.PARAGRAPH_1]: ParagraphBaseDataType & {
     Template: (props: Paragraph1Type) =>  JSX.Element;
-    Preview: () => JSX.Element;
     defaultValues: Paragraph1Type;
   };
 } = {
   [ParagraphIdEnum.PARAGRAPH_1]: {
     id: ParagraphIdEnum.PARAGRAPH_1,
+    category: PARAGRAPH_CATEGORY,
     Editor: Editor,
     Template: Template,
     Preview: Preview,

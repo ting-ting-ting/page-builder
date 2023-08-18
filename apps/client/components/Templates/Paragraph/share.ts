@@ -3,3 +3,5 @@ export enum ParagraphIdEnum {
   PARAGRAPH_2 = 'PARAGRAPH_2',
   PARAGRAPH_3 = 'PARAGRAPH_3',
 }
+
+export const PARAGRAPH_CATEGORY = 'PARAGRAPH_CATEGORY';
