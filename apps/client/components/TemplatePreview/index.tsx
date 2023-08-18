@@ -27,9 +27,9 @@ function TemplatePreview() {
         const imageWidth = canvas.width;
         const imageHeight = canvas.height;
         const ratio = Math.min(pdfWidth / imageWidth, pdfHeight / imageHeight);
-        const imageX = (pdfWidth - imageWidth * ratio) / 2;
-        const imageY = 30;
-        pdf.addImage(imageData, 'PNG', imageX, imageY, imageWidth * ratio, imageHeight * ratio);
+        // const imageX = (pdfWidth - imageWidth * ratio) / 2;
+        // const imageY = 40;
+        pdf.addImage(imageData, 'PNG', 0, 0, imageWidth * ratio, imageHeight * ratio);
         pdf.save('page.pdf');
       });
     }
