@@ -1,4 +1,4 @@
-import classes from './preview.module.scss';
+import classes from './index.module.scss';
 
 const Preview = () => {
   return (

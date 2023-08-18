@@ -1,6 +1,6 @@
 import { useState, useCallback, useMemo } from 'react';
 import { Modal, Select, Option } from '@mezzanine-ui/react';
-import { templateCategories, TemplateCategoryIdType } from '@components/Templates';
+import { templateCategories, TemplateCategoryIdType, templateIds, templateData } from '@components/Templates';
 import Form from './Form';
 import classes from './index.module.scss';
 
@@ -21,6 +21,8 @@ const TemplateEditModal = ({
   const [targetIndex, setTargetIndex] = useState<number>(0);
 
   const targetCategory = useMemo(() => templateCategories.find(c => c.id === targetCategoryId) ?? null, [targetCategoryId]);
+
+  const targetIds = useMemo(() => templateIds[targetCategoryId], [targetCategoryId]);
 
   const onChangeCategory = useCallback((categoryId: TemplateCategoryIdType) => {
     setTargetCategoryId(categoryId);
@@ -48,6 +50,17 @@ const TemplateEditModal = ({
             </Option>
           ))}
         </Select>
+      </div>
+      <div className={classes.previewWrapper}>
+        {targetIds.map((id, index) => {
+          const PreviewComponent = templateData[id].Preview;
+
+          return (
+            <div key={id} className={classes.previewBtn}>
+              <PreviewComponent/>
+            </div>
+          );
+        })}
       </div>
       <Form
         key={`${targetCategoryId}-${targetIndex}-${uuid ?? 'create'}`}
