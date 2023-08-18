@@ -1,4 +1,3 @@
-import { SelectValue } from '@mezzanine-ui/react';
 import { paragraphIndex, paragraphIds } from './Paragraph/index';
 import { imageIndex, imageIds } from './Image/index';
 
@@ -10,7 +9,12 @@ export const templateData = {
 export const PARAGRAPH_CATEGORY = 'PARAGRAPH_CATEGORY';
 export const IMAGE_CATEGORY = 'IMAGE_CATEGORY';
 
-export const templateCategories: SelectValue[] = [
+export type TemplateCategoryIdType = typeof PARAGRAPH_CATEGORY | typeof IMAGE_CATEGORY;
+
+export const templateCategories: {
+  id: TemplateCategoryIdType;
+  name: string;
+}[] = [
   {
     id: PARAGRAPH_CATEGORY,
     name: 'Paragraph',
@@ -21,7 +25,7 @@ export const templateCategories: SelectValue[] = [
   },
 ];
 
-export const templateIds = [
-  ...paragraphIds,
-  ...imageIds,
-]
+export const templateIds = {
+  [PARAGRAPH_CATEGORY]: paragraphIds,
+  [IMAGE_CATEGORY]: imageIds,
+}

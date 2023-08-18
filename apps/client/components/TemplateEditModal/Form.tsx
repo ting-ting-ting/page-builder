@@ -3,13 +3,13 @@ import { Button, Icon, IconButton, cx } from '@mezzanine-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@mezzanine-ui/icons';
 import { useForm } from 'react-hook-form';
 import FormFieldsWrapper from '@components/Form/FormFieldsWrapper';
-import { templateData, templateIds } from '@components/Templates/index';
+import { templateData, templateIds, TemplateCategoryIdType } from '@components/Templates/index';
 import { TemplateProps } from '@components/Templates/typing';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import classes from './index.module.scss';
 
 type FormProps = {
-  targetCategoryId: string;
+  targetCategoryId: TemplateCategoryIdType;
   targetIndex: number;
   setTargetIndex: Dispatch<SetStateAction<number>>;
   onClose: VoidFunction;
@@ -36,8 +36,8 @@ const Form = ({
     if (editMode && uuid) {
       return templateData[templatesData[uuid].id];
     }
-    return templateData[templateIds[targetIndex]];
-  }, [editMode, uuid, templatesData, targetIndex]);
+    return templateData[templateIds[targetCategoryId][targetIndex]];
+  }, [editMode, uuid, templatesData, targetCategoryId, targetIndex]);
 
   const defaultValues = useMemo(() => (editMode && uuid) ? templatesData[uuid].props : targetTemplate.defaultValues, [templatesData, editMode, uuid, targetTemplate]);
 
@@ -54,10 +54,10 @@ const Form = ({
   }, [targetIndex, setTargetIndex]);
 
   const onRight = useCallback(() => {
-    if (targetIndex !== templateIds.length - 1) {
+    if (targetIndex !== templateIds[targetCategoryId].length - 1) {
       setTargetIndex(i => i + 1);
     }
-  }, [targetIndex, setTargetIndex]);
+  }, [targetCategoryId, targetIndex, setTargetIndex]);
 
   return (
     <FormFieldsWrapper<TemplateProps>
@@ -108,7 +108,7 @@ const Form = ({
             size="large"
             onClick={onRight}
             className={cx(classes.arrowBtn, classes.rightBtn)}
-            disabled={targetIndex === templateIds.length - 1}
+            disabled={targetIndex === templateIds[targetCategoryId].length - 1}
           >
             <Icon icon={ChevronRightIcon} />
           </IconButton>

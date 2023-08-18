@@ -1,6 +1,6 @@
-import { useState, useMemo } from 'react';
+import { useState, useCallback, useMemo } from 'react';
 import { Modal, Select, Option } from '@mezzanine-ui/react';
-import { templateCategories } from '@components/Templates';
+import { templateCategories, TemplateCategoryIdType } from '@components/Templates';
 import Form from './Form';
 import classes from './index.module.scss';
 
@@ -17,10 +17,15 @@ const TemplateEditModal = ({
   editMode,
   uuid,
 } : TemplateEditModalProps) => {
-  const [targetCategoryId, setTargetCategoryId] = useState<string>(templateCategories[0].id);
+  const [targetCategoryId, setTargetCategoryId] = useState<TemplateCategoryIdType>(templateCategories[0].id);
   const [targetIndex, setTargetIndex] = useState<number>(0);
 
   const targetCategory = useMemo(() => templateCategories.find(c => c.id === targetCategoryId) ?? null, [targetCategoryId]);
+
+  const onChangeCategory = useCallback((categoryId: TemplateCategoryIdType) => {
+    setTargetCategoryId(categoryId);
+    setTargetIndex(0);
+  }, []);
 
   return (
     <Modal
@@ -33,7 +38,7 @@ const TemplateEditModal = ({
         <span className={classes.modalTitle}>選擇模板</span>
         <Select
           onChange={(op) => {
-            setTargetCategoryId(op.id);
+            onChangeCategory(op.id as TemplateCategoryIdType);
           }}
           value={targetCategory}
         >
