@@ -17,10 +17,29 @@
     border: 1px dashed  var(--gray35);
     cursor: pointer;
     gap: 12px;
+    transition: transition.standard(border);
 
-    &:hover {
+    &:hover, &.dragActive {
+      border-color: var(--black);
+
       .text, .iconWrapper > .icon {
         color: var(--black);
+      }
+
+      .iconWrapper {
+        border-color: var(--black);
+      }
+    }
+
+    &.dragReject {
+      border-color: var(--red);
+
+      .text, .iconWrapper > .icon {
+        color: var(--red);
+      }
+
+      .iconWrapper {
+        border-color: var(--red);
       }
     }
 
@@ -32,6 +51,7 @@
       height: 48px;
       border-radius: 50%;
       border: 1px solid var(--gray5);
+      transition: transition.standard(border);
 
       .icon {
         font-size: 24px;

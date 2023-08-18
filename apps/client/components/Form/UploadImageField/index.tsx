@@ -1,6 +1,7 @@
 import { useCallback, useRef } from 'react';
+import { useDropzone } from 'react-dropzone';
 import { useWatch, useFormContext } from 'react-hook-form';
-import { Icon } from '@mezzanine-ui/react';
+import { Icon, cx } from '@mezzanine-ui/react';
 import { PlusIcon } from '@mezzanine-ui/icons';
 import { readFile } from '@utils/files';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
@@ -40,15 +41,31 @@ const UploadImageField = ({
       })
   };
 
+  const onDrop = (file: File) => {
+    onUpload(file);
+  }
+
+  const {getRootProps, getInputProps, isDragActive, isDragReject} = useDropzone({
+    accept: {
+      'image/*': [],
+    },
+    multiple: false,
+    onDrop: files => onDrop(files[0]),
+  });
+
   return (
     <>
       <div className={classes.root}>
         <button
           type="button"
-          className={classes.uploadBtn}
+          className={cx(classes.uploadBtn, {
+            [classes.dragActive]: isDragActive,
+            [classes.dragReject]: isDragReject,
+          })}
           onClick={() => {
             inputRef.current?.click();
           }}
+          {...getRootProps()}
         >
           <div className={classes.iconWrapper}>
             <Icon className={classes.icon} icon={PlusIcon} />
@@ -73,6 +90,7 @@ const UploadImageField = ({
             }}
             type="file"
             style={{ position: 'absolute', width: 0 }}
+            {...getInputProps()}
           />
         </button>
       </div>
