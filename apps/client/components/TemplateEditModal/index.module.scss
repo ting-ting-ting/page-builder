@@ -97,11 +97,17 @@
     }
 
     .fieldsContainer {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
       align-self: stretch;
       overflow-y: auto;
       height: 300px;
 
       .fieldsWrapper {
+        flex: 1;
+        align-self: stretch;
         padding: 40px var(--grid-system-margin);
       }
     }
