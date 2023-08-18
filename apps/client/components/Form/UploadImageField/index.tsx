@@ -1,7 +1,8 @@
 import { useCallback, useRef } from 'react';
-import { useWatch, useFormState, useFormContext } from 'react-hook-form';
+import { useWatch, useFormContext } from 'react-hook-form';
 import { Icon } from '@mezzanine-ui/react';
 import { PlusIcon } from '@mezzanine-ui/icons';
+import { readFile } from '@utils/files';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
 import classes from './index.module.scss';
 
@@ -23,14 +24,18 @@ const UploadImageField = ({
     name: registerName as string,
   });
 
-  const { errors } = useFormState({ control: control || contextControl });
-
   const onClear = useCallback(() => {
     setValue(registerName, "", { shouldDirty: true });
   }, [registerName, setValue]);
 
   const onUpload = (file: File) => {
-    console.log('file', file);
+    readFile(file)
+      .then(d => {
+        setValue(registerName, d);
+      })
+      .catch(error => {
+        console.error(error);
+      })
   };
 
   return (
