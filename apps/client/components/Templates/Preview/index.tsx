@@ -23,7 +23,7 @@ export type CssVarInterpolations = Record<string, string | number | null | undef
 
 const Preview = ({
   items,
-  gap = 8,
+  gap = 4,
   gapUnit = 'px',
   position = 'center',
   template = [1],

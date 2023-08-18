@@ -50,12 +50,13 @@
         transition: transition.standard(border), transition.standard(background-color);
 
         &:hover {
-          border-color: var(--black);
+          border-color: var(--green3);
           background-color: var(--green1);
         }
 
         &.active {
           border-color: var(--green3);
+          background-color: var(--green2);
         }
       }
     }
