@@ -2,7 +2,7 @@ import dynamic from 'next/dynamic';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import GoToPreviewLink from '@components/GoToPreviewLink';
 
-const TemplatesContainer = dynamic(() => import('@components/Templates/TemplatesContainer'), {
+const TemplatesContainer = dynamic(() => import('@components/TemplatesContainer'), {
   ssr: false,
 });
 

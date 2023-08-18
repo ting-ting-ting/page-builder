@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic';
 
-const TemplatePreview = dynamic(() => import('@components/Templates/TemplatePreview'), {
+const TemplatePreview = dynamic(() => import('@components/TemplatePreview'), {
   ssr: false,
 });
 

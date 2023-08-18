@@ -4,6 +4,7 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import { templateData } from '@components/Templates/index';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
+import classes from './index.module.scss';
 
 function TemplatePreview() {
   const pdfRef = useRef<HTMLDivElement>(null);
@@ -44,7 +45,7 @@ function TemplatePreview() {
 
   return (
     <>
-      <div ref={pdfRef}>
+      <div ref={pdfRef} className={classes.root}>
         {templateUuids.map((uuid) => {
           const target = templatesDataWithUuid[uuid];
           const TComponent: any = templateData[target.id].Template;

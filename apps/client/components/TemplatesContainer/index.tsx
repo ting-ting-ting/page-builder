@@ -4,6 +4,7 @@ import dynamic from 'next/dynamic';
 import { useTemplate } from '@components/Templates/Provider/useTemplate';
 import { templateData } from '@components/Templates/index';
 import Controller from './Controller';
+import classes from './index.module.scss';
 
 const TemplateEditModal = dynamic(() => import('@components/TemplateEditModal'), {
   ssr: false,
@@ -28,7 +29,7 @@ function TemplatesContainer() {
 
   return (
     <>
-      <div style={{ paddingBottom: 200 }}>
+      <div className={classes.root}>
         {templateUuids.map((uuid, index) => {
           const target = templatesDataWithUuid[uuid];
           const TComponent: any = templateData[target.id].Template;
