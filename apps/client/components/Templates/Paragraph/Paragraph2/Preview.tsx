@@ -1,8 +1,17 @@
-import Preview from '@components/Templates/Preview';
+import Preview, { PARAGRAPH_PREVIEW_TYPE } from '@components/Templates/Preview';
 
 const Paragraph2Preview = () => {
   return (
-    <Preview />
+    <Preview
+      items={[PARAGRAPH_PREVIEW_TYPE, PARAGRAPH_PREVIEW_TYPE]}
+      template={[{
+        template: 1,
+        unit: 'fr',
+      }, {
+        template: 1,
+        unit: 'fr',
+      }]}
+    />
   );
 }
 
