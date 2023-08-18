@@ -9,17 +9,12 @@
     align-items: flex-start;
     justify-content: space-between;
 
-    .paragraphWrapper {
-      border-top: 2px solid var(--green4);
-      padding: 24px 16px 0;
+    .s1Wrapper {
+      width: gs-columns-width(4);
+    }
 
-      &.s1Wrapper {
-        width: gs-columns-width(4);
-      }
-
-      &.s2Wrapper {
-        width: gs-columns-width(8);
-      }
+    .s2Wrapper {
+      width: gs-columns-width(8);
 
       .text {
         @include typo-body1;

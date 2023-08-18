@@ -1,4 +1,3 @@
-import cx from 'classnames';
 import { Paragraph3Type } from './typing';
 import classes from './template.module.scss';
 
@@ -9,7 +8,7 @@ const Paragraph3Template = ({
   return (
     <div className={classes.root}>
       <div className={classes.container}>
-        <div className={cx(classes.paragraphWrapper, classes.s1Wrapper)}>
+        <div className={classes.s1Wrapper}>
           <p
             className={classes.text}
             dangerouslySetInnerHTML={{
@@ -17,7 +16,7 @@ const Paragraph3Template = ({
             }}
           />
         </div>
-        <div className={cx(classes.paragraphWrapper, classes.s2Wrapper)}>
+        <div className={classes.s2Wrapper}>
           <p
             className={classes.text}
             dangerouslySetInnerHTML={{
