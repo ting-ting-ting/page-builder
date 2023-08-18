@@ -96,11 +96,14 @@
       }
     }
 
-    .fieldsWrapper {
-      height: 300px;
+    .fieldsContainer {
       align-self: stretch;
-      padding: 40px var(--grid-system-margin);
       overflow-y: auto;
+      height: 300px;
+
+      .fieldsWrapper {
+        padding: 40px var(--grid-system-margin);
+      }
     }
 
     .modalFooter {

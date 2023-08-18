@@ -114,8 +114,10 @@ const Form = ({
           </IconButton>
         )}
       </div>
-      <div className={classes.fieldsWrapper}>
-        {targetTemplate.Editor()}
+      <div className={classes.fieldsContainer}>
+        <div className={classes.fieldsWrapper}>
+          {targetTemplate.Editor()}
+        </div>
       </div>
       <div className={classes.modalFooter}>
         <Button type="button" variant="contained" size="large" onClick={onClose}>關閉</Button>
