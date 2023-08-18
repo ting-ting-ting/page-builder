@@ -55,6 +55,9 @@ const UploadImageField = ({
 
   return (
     <>
+      {label && (
+        <p className={classes.label}>{label}</p>
+      )}
       <div className={classes.root}>
         <button
           type="button"

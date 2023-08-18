@@ -69,6 +69,10 @@
   }
 }
 
+.label {
+  margin-bottom: 8px;
+}
+
 .hint {
   @include typo-body3;
   font-weight: 500;
