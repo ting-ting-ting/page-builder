@@ -38,40 +38,44 @@ const TemplateEditModal = ({
     >
       <div className={classes.modalHeader}>
         <span className={classes.modalTitle}>選擇模板</span>
-        <Select
-          onChange={(op) => {
-            onChangeCategory(op.id as TemplateCategoryIdType);
-          }}
-          value={targetCategory}
-        >
-          {templateCategories?.map((option) => (
-            <Option key={option.id} value={option.id}>
-              {option.name}
-            </Option>
-          ))}
-        </Select>
+        {!editMode && (
+          <Select
+            onChange={(op) => {
+              onChangeCategory(op.id as TemplateCategoryIdType);
+            }}
+            value={targetCategory}
+          >
+            {templateCategories?.map((option) => (
+              <Option key={option.id} value={option.id}>
+                {option.name}
+              </Option>
+            ))}
+          </Select>
+        )}
       </div>
-      <div className={classes.previewBtnContainer}>
-        <div className={classes.previewBtnWrapper}>
-          {targetIds.map((id, index) => {
-            const PreviewComponent = templateData[id].Preview;
+      {!editMode && (
+        <div className={classes.previewBtnContainer}>
+          <div className={classes.previewBtnWrapper}>
+            {targetIds.map((id, index) => {
+              const PreviewComponent = templateData[id].Preview;
 
-            return (
-              <div
-                key={id}
-                className={cx(classes.previewBtn, {
-                  [classes.active]: index === targetIndex,
-                })}
-                onClick={() => {
-                  setTargetIndex(index);
-                }}
-              >
-                <PreviewComponent/>
-              </div>
-            );
-          })}
+              return (
+                <div
+                  key={id}
+                  className={cx(classes.previewBtn, {
+                    [classes.active]: index === targetIndex,
+                  })}
+                  onClick={() => {
+                    setTargetIndex(index);
+                  }}
+                >
+                  <PreviewComponent/>
+                </div>
+              );
+            })}
+          </div>
         </div>
-      </div>
+      )}
       <Form
         key={`${targetCategoryId}-${targetIndex}-${uuid ?? 'create'}`}
         targetCategoryId={targetCategoryId}
