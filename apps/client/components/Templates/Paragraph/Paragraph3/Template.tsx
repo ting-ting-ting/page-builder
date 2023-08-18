@@ -9,7 +9,7 @@ const Paragraph3Template = ({
     <div className={classes.root}>
       <div className={classes.container}>
         <div className={classes.s1Wrapper}>
-          {paragraph3_image}
+
         </div>
         <div className={classes.s2Wrapper}>
           <p
