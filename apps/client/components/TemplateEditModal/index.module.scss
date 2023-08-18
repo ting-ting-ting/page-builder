@@ -6,8 +6,20 @@
   height: 100%;
 
   .modalHeader {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
     align-self: stretch;
     padding: 20px var(--grid-system-margin);
+    gap: 20px;
+    border-bottom: 1px solid var(--gray5);
+
+    .modalTitle {
+      @include typo-h3;
+      font-weight: 500;
+      color: var(--black);
+    }
   }
 
   .form {

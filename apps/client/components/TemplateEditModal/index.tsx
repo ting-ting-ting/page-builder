@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import { Modal, ModalHeader } from '@mezzanine-ui/react';
+import { useState, useMemo } from 'react';
+import { Modal, Select, Option } from '@mezzanine-ui/react';
+import { templateCategories } from '@components/Templates';
 import Form from './Form';
 import classes from './index.module.scss';
 
@@ -16,7 +17,10 @@ const TemplateEditModal = ({
   editMode,
   uuid,
 } : TemplateEditModalProps) => {
+  const [targetCategoryId, setTargetCategoryId] = useState<string>(templateCategories[0].id);
   const [targetIndex, setTargetIndex] = useState<number>(0);
+
+  const targetCategory = useMemo(() => templateCategories.find(c => c.id === targetCategoryId) ?? null, [targetCategoryId]);
 
   return (
     <Modal
@@ -25,7 +29,21 @@ const TemplateEditModal = ({
       className={classes.root}
       direction="left"
     >
-      <ModalHeader className={classes.modalHeader}>選擇模板</ModalHeader>
+      <div className={classes.modalHeader}>
+        <span className={classes.modalTitle}>選擇模板</span>
+        <Select
+          onChange={(op) => {
+            setTargetCategoryId(op.id);
+          }}
+          value={targetCategory}
+        >
+          {templateCategories?.map((option) => (
+            <Option key={option.id} value={option.id}>
+              {option.name}
+            </Option>
+          ))}
+        </Select>
+      </div>
       <Form
         key={`${targetIndex}-${uuid ?? 'create'}`}
         onClose={onClose}

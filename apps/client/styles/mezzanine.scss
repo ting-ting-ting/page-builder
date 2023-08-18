@@ -13,6 +13,7 @@
 
 @include mzn-core.styles();
 
+// Modal
 .mzn-overlay {
   .mzn-modal {
     max-height: unset;
@@ -23,4 +24,9 @@
     bottom: unset;
     left: unset;
   }
+}
+
+// Select
+.mzn-icon.mzn-text-field__action-icon.mzn-select-trigger__suffix-action-icon[data-icon-name='chevron-down'] {
+  pointer-events: none;
 }
