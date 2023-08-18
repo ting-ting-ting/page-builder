@@ -11,6 +11,7 @@ const isProduction = process.env.NODE_ENV === 'production';
 const nextConfig = {
   poweredByHeader: false,
   assetPrefix: isProduction ? '.' : undefined,
+  basePath: isProduction ? '/page-builder' : undefined,
   output: 'export',
   nx: {
     svgr: true,
