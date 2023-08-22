@@ -6,6 +6,7 @@ import { ReactComponent as GithubIcon } from './icons/github.svg';
 import { ReactComponent as InstagramIcon } from './icons/instagram.svg';
 import { ReactComponent as LinkedinIcon } from './icons/linkedin.svg';
 import { ReactComponent as MediumIcon } from './icons/medium.svg';
+import { ReactComponent as StackOverflowIcon } from './icons/stack_overflow.svg';
 import { ReactComponent as TiktokIcon } from './icons/tiktok.svg';
 import { ReactComponent as WebsiteIcon } from './icons/website.svg';
 import { ReactComponent as YoutubeIcon } from './icons/youtube.svg';
@@ -16,6 +17,7 @@ const GITHUB_ICON = 'GITHUB_ICON';
 const INSTAGRAM_ICON = 'INSTAGRAM_ICON';
 const LINKEDIN_ICON = 'LINKEDIN_ICON';
 const MEDIUM_ICON = 'MEDIUM_ICON';
+const STACK_OVERFLOW_ICON = 'STACK_OVERFLOW_ICON';
 const TIKTOK_ICON = 'TIKTOK_ICON';
 const WEBSITE_ICON = 'WEBSITE_ICON';
 const YOUTUBE_ICON = 'YOUTUBE_ICON';
@@ -38,6 +40,9 @@ const IconsProvider = ({ children } : { children: ReactNode }) => {
       case MEDIUM_ICON:
         return <MediumIcon className={cx(classes.icon, className)} />;
 
+      case STACK_OVERFLOW_ICON:
+        return <StackOverflowIcon className={cx(classes.icon, className)} />;
+
       case TIKTOK_ICON:
         return <TiktokIcon className={cx(classes.icon, className)} />;
 
@@ -58,6 +63,7 @@ const IconsProvider = ({ children } : { children: ReactNode }) => {
     INSTAGRAM_ICON,
     LINKEDIN_ICON,
     MEDIUM_ICON,
+    STACK_OVERFLOW_ICON,
     TIKTOK_ICON,
     WEBSITE_ICON,
     YOUTUBE_ICON,
