@@ -1,4 +1,6 @@
+import { Fragment } from 'react';
 import Image from 'next/image';
+import BlankLink from '@components/BlankLink';
 import { useIcons } from '@components/IconsProvider/useIcons';
 import { Profiles1Type } from './typing';
 import classes from './template.module.scss';
@@ -32,14 +34,16 @@ const Profiles1Template = ({
             }}
           />
           <div className={classes.icons}>
-            {profiles1_icons.map(icon => {
+            {profiles1_icons.map((icon, index) => {
               if (icon.url) {
                 return (
-                  getIcon(icon.icon)
+                  <BlankLink key={index} href={icon.url} className={classes.iconLink}>
+                    {getIcon(icon.icon, classes.icon)}
+                  </BlankLink>
                 );
               }
 
-              return getIcon(icon.icon);
+              return <Fragment key={index}>{getIcon(icon.icon)}</Fragment>;
             })}
           </div>
         </div>

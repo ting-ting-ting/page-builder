@@ -48,6 +48,16 @@
         justify-content: flex-start;
         gap: 8px;
         margin-top: 16px;
+
+        .iconLink {
+          display: flex;
+
+          &:hover {
+            .icon {
+              color: var(--green3);
+            }
+          }
+        }
       }
     }
   }
