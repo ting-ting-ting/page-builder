@@ -11,14 +11,17 @@ import { TemplateIdEnum } from '../enum';
 import { TemplateProps } from '../typing';
 
 const TemplateProvider = ({ children } : { children: ReactNode }) => {
-  const [templateUuids, setTemplateUuids] = useState<string[]>([]);
+  const uuidsFromStorage = getLocalStorage(StorageName.TEMPLATE_UUIDS);
+  const dataFromStorage = getLocalStorage(StorageName.TEMPLATE_DATA_WITH_UUID);
+
+  const [templateUuids, setTemplateUuids] = useState<string[]>(uuidsFromStorage ? JSON.parse(uuidsFromStorage) : []);
   const [templatesDataWithUuid, setTemplatesDataWithUuid] = useState<{
     [uuid: string]: {
       id: TemplateIdEnum;
       uuid: string;
       props: TemplateProps;
     }
-  }>({});
+  }>(dataFromStorage ? JSON.parse(dataFromStorage) : {});
 
   useEffect(() => {
     setLocalStorage(StorageName.TEMPLATE_UUIDS, JSON.stringify(templateUuids));

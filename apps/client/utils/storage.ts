@@ -7,7 +7,8 @@ export const setLocalStorage = (name: StorageName, value: string): void => {
   localStorage.setItem(name, value);
 };
 
-/** 不存在時回傳空字串 */
 export const getLocalStorage = (name: StorageName): string => {
+  if (typeof window === 'undefined') return '';
+
   return localStorage.getItem(name) ?? '';
 };
