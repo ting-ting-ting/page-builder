@@ -1,6 +1,8 @@
-import { useMemo } from 'react';
+import { useMemo, useState, useRef } from 'react';
 import { Input, InputProps } from '@mezzanine-ui/react';
 import { useFormContext, useWatch } from 'react-hook-form';
+import Menu from '@components/Menu';
+import { useIcons } from '@components/IconsProvider/useIcons';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
 import classes from './index.module.scss';
 
@@ -19,6 +21,10 @@ const IconField = ({
   required,
   style,
 } : IconFieldProps) => {
+  const { icons } = useIcons();
+  const [open, setOpen] = useState<boolean>(false);
+  const controlRef = useRef<HTMLDivElement>(null);
+
   const {
     control: contextControl,
     register: contextRegister,
@@ -50,9 +56,28 @@ const IconField = ({
         <p className={classes.label}>{label}</p>
       )}
       <div className={classes.fieldsWrapper}>
-        <div className={classes.iconSelector}>
-
+        <div
+          className={classes.iconSelector}
+          ref={controlRef}
+          onClick={() => {
+            setOpen(s => !s);
+          }}
+        >
+          <span className={classes.iconPlaceholder}>Icon</span>
         </div>
+        <Menu
+          open={open}
+          setOpen={setOpen}
+          controlRef={controlRef}
+        >
+          <div className={classes.iconsWrapper}>
+            {icons.map(icon => (
+              <div key={icon.id} className={classes.iconBtn}>
+                {icon.icon}
+              </div>
+            ))}
+          </div>
+        </Menu>
         <Input
           fullWidth
           clearable={clearable}
