@@ -7,7 +7,10 @@ export const schema: Yup.ObjectSchema<Profiles1Type> = Yup.object({
   profiles1_icons: Yup.array().of((
     Yup.object().shape({
       icon: Yup.string().required('必填'),
-      url: Yup.string(),
+      url: Yup.string().matches(
+        /(?:(?:http|https):\/\/)?(?:www.)?\//,
+        '網址格式錯誤'
+      ),
     })
   )).required(),
 });

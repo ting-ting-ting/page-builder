@@ -1,15 +1,15 @@
 import { memo, ReactNode } from 'react';
-import { FieldError } from 'react-hook-form';
+import { FieldErrors } from 'react-hook-form';
 import { cx, FormField, FormLabel, FormMessage } from '@mezzanine-ui/react';
-// import { ErrorMessage } from '@hookform/error-message';
-
+import { ErrorMessage as HookformErrorMessage } from '@hookform/error-message';
+import ErrorMessage from '@components/Form/ErrorMessage';
 import classes from './index.module.scss';
 
 export interface BaseFieldProps {
   children: ReactNode;
   name: string;
   label?: string;
-  errors?: Record<string, FieldError | undefined>;
+  errors?: FieldErrors<any>;
 }
 
 const BaseField = ({
@@ -29,20 +29,13 @@ const BaseField = ({
       </p>
     )}
     <div className={cx(classes.field)}>{children}</div>
-    {/* {!disabledErrMsg && (
-      <ErrorMessage
-        errors={errors}
-        name={name}
-        render={({ message }) => (
-          <div>
-            <ErrorIcon />
-            <span>
-              {message}
-            </span>
-          </div>
-        )}
-      />
-    )} */}
+    <HookformErrorMessage
+      errors={errors}
+      name={name}
+      render={({ message }) => (
+        <ErrorMessage message={message} />
+      )}
+    />
   </div>
 );
 

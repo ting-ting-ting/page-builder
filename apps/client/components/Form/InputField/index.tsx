@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { Input, InputProps } from '@mezzanine-ui/react';
-import { useFormContext, useWatch } from 'react-hook-form';
+import { useFormContext, useFormState, useWatch } from 'react-hook-form';
 import BaseField from '@components/Form/BaseField';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
 import classes from './index.module.scss';
@@ -45,10 +45,13 @@ const InputField = ({
     [register, contextRegister, registerName, required, disabled]
   );
 
+  const { errors } = useFormState({ control: control || contextControl });
+
   return (
     <BaseField
       label={label}
       name={registerName}
+      errors={errors}
     >
       <Input
         fullWidth
