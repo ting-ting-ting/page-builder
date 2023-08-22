@@ -6,8 +6,13 @@
   justify-content: space-between;
   height: 100%;
 
-  .fieldWrapper {
-    width: gs-columns-width(4);
-    aspect-ratio: 3 / 2;
+  .avatarFieldWrapper {
+    width: gs-columns-width(3);
+    aspect-ratio: 1 / 1;
+  }
+
+  .descFieldWrapper {
+    width: gs-columns-width(9);
+    height: 100%;
   }
 }

@@ -9,13 +9,15 @@
     align-items: flex-start;
     justify-content: space-between;
 
-    .fieldWrapper {
-      width: gs-columns-width(4);
+    .avatarFieldWrapper {
+      width: gs-columns-width(3);
 
       .imageWrapper {
         position: relative;
         width: 100%;
-        aspect-ratio: 3 / 2;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        overflow: hidden;
 
         .imagePlaceholder {
           @include typo-h3;
@@ -28,6 +30,16 @@
           height: 100%;
           background-color: var(--green15);
         }
+      }
+    }
+
+    .descFieldWrapper {
+      width: gs-columns-width(9);
+
+      .text {
+        @include typo-body1;
+        font-weight: 500;
+        color: var(--black);
       }
     }
   }

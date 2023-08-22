@@ -1,28 +1,21 @@
 import UploadImageField from '@components/Form/UploadImageField';
+import EditorField from '@components/Form/EditorField';
 import classes from './editor.module.scss';
 
 const Profiles1Editor = () => {
   return (
     <div className={classes.root}>
-      <div className={classes.fieldWrapper}>
+      <div className={classes.avatarFieldWrapper}>
         <UploadImageField
-          label="圖一"
-          registerName="profiles1_i1"
-          hint="建議尺寸: 900px X 600px"
+          label="大頭貼"
+          registerName="profiles1_avatar"
+          hint="建議尺寸: 900px X 900px"
         />
       </div>
-      <div className={classes.fieldWrapper}>
-        <UploadImageField
-          label="圖二"
-          registerName="profiles1_i2"
-          hint="建議尺寸: 900px X 600px"
-        />
-      </div>
-      <div className={classes.fieldWrapper}>
-        <UploadImageField
-          label="圖三"
-          registerName="profiles1_i3"
-          hint="建議尺寸: 900px X 600px"
+      <div className={classes.descFieldWrapper}>
+        <EditorField
+          label="簡介"
+          registerName="profiles1_desc"
         />
       </div>
     </div>

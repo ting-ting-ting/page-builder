@@ -18,9 +18,8 @@ export const profiles1Index: {
     Template: Template,
     Preview: Preview,
     defaultValues: {
-      profiles1_i1: '',
-      profiles1_i2: '',
-      profiles1_i3: '',
+      profiles1_avatar: '',
+      profiles1_desc: '<p>我是簡介</p>',
     },
   },
 }
