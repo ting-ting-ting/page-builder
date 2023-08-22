@@ -1,19 +1,7 @@
-.root {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
+.input {
+  flex: 1;
+  align-self: stretch;
+  min-width: unset;
   width: 100%;
   height: 100%;
-
-  .label {
-    margin-bottom: 8px;
-  }
-
-  .input {
-    flex: 1;
-    align-self: stretch;
-    min-width: unset;
-    width: 100%;
-  }
 }
