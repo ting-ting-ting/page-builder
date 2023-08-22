@@ -2,12 +2,13 @@ import classes from './index.module.scss';
 
 export const PARAGRAPH_PREVIEW_TYPE = 'PARAGRAPH_PREVIEW_TYPE';
 export const IMAGE_PREVIEW_TYPE = 'IMAGE_PREVIEW_TYPE';
+export const AVATAR_PREVIEW_TYPE = 'AVATAR_PREVIEW_TYPE';
 
 type CssUnit = 'px' | 'fr' | '%';
 type Position = 'flex-start' | 'flex-end' | 'center';
 
 export type PreviewProps = {
-  items: (typeof PARAGRAPH_PREVIEW_TYPE | typeof IMAGE_PREVIEW_TYPE)[];
+  items: (typeof PARAGRAPH_PREVIEW_TYPE | typeof IMAGE_PREVIEW_TYPE | typeof AVATAR_PREVIEW_TYPE)[];
   gap?: number;
   gapUnit?: CssUnit;
   position?: Position;
@@ -43,6 +44,9 @@ const Preview = ({
 
           case IMAGE_PREVIEW_TYPE:
             return <div key={index} className={classes.imageItem} />;
+
+          case AVATAR_PREVIEW_TYPE:
+            return <div key={index} className={classes.avatarItem} />;
 
           default:
             return null;
