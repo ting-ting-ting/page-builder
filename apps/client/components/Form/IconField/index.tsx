@@ -1,6 +1,7 @@
-import { useState, useRef } from 'react';
-import { useClickAway } from '@mezzanine-ui/react';
-import { useFormContext, useWatch } from 'react-hook-form';
+import { useState, useMemo, useRef } from 'react';
+import { get } from 'lodash';
+import { useClickAway, cx } from '@mezzanine-ui/react';
+import { useFormContext, useWatch, useFormState } from 'react-hook-form';
 import Menu from '@components/Menu';
 import { useIcons } from '@components/IconsProvider/useIcons';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
@@ -38,6 +39,9 @@ const IconField = ({
     setValue,
   } = useFormContext();
 
+  const { errors } = useFormState({ control: control || contextControl });
+  const haveError = useMemo(() => !!get(errors, registerName), [errors, registerName]);
+
   const watchValue =
     useWatch({
       control: control || contextControl,
@@ -48,7 +52,9 @@ const IconField = ({
     <div className={classes.root}>
       <div ref={nodeRef}>
         <div
-          className={classes.iconSelector}
+          className={cx(classes.iconSelector, {
+            [classes.error]: haveError,
+          })}
           ref={controlRef}
           onClick={() => {
             setOpen(s => !s);

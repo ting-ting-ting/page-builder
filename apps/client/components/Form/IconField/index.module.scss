@@ -20,9 +20,24 @@
     border: 1px solid var(--gray3);
     transition: transition.standard(border);
 
+    &.error {
+      border-color: var(--red);
+
+      .iconPlaceholder {
+        color: var(--red);
+      }
+    }
+
     &:hover {
       border-color: var(--green3);
     }
+  }
+
+  .iconPlaceholder {
+    @include typo-body3;
+    font-weight: 500;
+    color: var(--black);
+    transition: transition.standard(color);
   }
 
   .iconValue {
