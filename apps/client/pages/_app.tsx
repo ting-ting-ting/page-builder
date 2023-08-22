@@ -1,5 +1,6 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import IconsProvider from '@components/IconsProvider/Provider';
 import TemplateProvider from '@components/Templates/Provider/Provider';
 import '@styles/global.scss';
 
@@ -10,9 +11,11 @@ function CustomApp({ Component, pageProps }: AppProps) {
         <title>Welcome to client!</title>
       </Head>
       <main className="app">
-        <TemplateProvider>
-          <Component {...pageProps} />
-        </TemplateProvider>
+        <IconsProvider>
+          <TemplateProvider>
+            <Component {...pageProps} />
+          </TemplateProvider>
+        </IconsProvider>
       </main>
     </>
   );
