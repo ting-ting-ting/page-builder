@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import Quill from 'react-quill';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
@@ -29,6 +30,13 @@ const EditorField = ({
       name: registerName as string,
       defaultValue,
     }) || "";
+
+    useEffect(() => {
+      // editor empty value
+      if (watchValue === '<p><br></p>') {
+        setValue(registerName, '');
+      }
+    }, [watchValue, setValue, registerName])
 
   return (
     <BaseField
