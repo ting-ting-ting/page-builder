@@ -23,13 +23,13 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
     }
   }>(dataFromStorage ? JSON.parse(dataFromStorage) : {});
 
-  useEffect(() => {
-    setLocalStorage(StorageName.TEMPLATE_UUIDS, JSON.stringify(templateUuids));
-  }, [templateUuids]);
+  // useEffect(() => {
+  //   setLocalStorage(StorageName.TEMPLATE_UUIDS, JSON.stringify(templateUuids));
+  // }, [templateUuids]);
 
-  useEffect(() => {
-    setLocalStorage(StorageName.TEMPLATE_DATA_WITH_UUID, JSON.stringify(templatesDataWithUuid));
-  }, [templatesDataWithUuid]);
+  // useEffect(() => {
+  //   setLocalStorage(StorageName.TEMPLATE_DATA_WITH_UUID, JSON.stringify(templatesDataWithUuid));
+  // }, [templatesDataWithUuid]);
 
   const push = useCallback(({
     id,
