@@ -21,7 +21,7 @@ const Profiles1Template = ({
               <Image src={profiles1_avatar} alt="" fill />
             ) : (
               <div className={classes.imagePlaceholder}>
-                Image
+                Avatar
               </div>
             )}
           </div>
