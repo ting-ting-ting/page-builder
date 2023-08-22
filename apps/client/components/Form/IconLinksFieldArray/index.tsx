@@ -1,5 +1,8 @@
+import { useCallback } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
+import { Button } from '@mezzanine-ui/react';
 import IconField from '@components/Form/IconField';
+import InputField from '@components/Form/InputField';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
 import classes from './index.module.scss';
 
@@ -14,15 +17,35 @@ const IconLinksFieldArray = ({
     name: registerName,
   });
 
+  const onAppend = useCallback(() => {
+    append({
+      icon: '',
+      url: '',
+    });
+  }, [append]);
+
   return (
-    <div>
-      {fields.map((field, index) => (
-        <div key={field.id}>
-          <IconField
-            registerName={`${registerName}.${index}.icon`}
-          />
-        </div>
-      ))}
+    <div className={classes.root}>
+      <div className={classes.fields}>
+        {fields.map((field, index) => (
+          <div key={field.id} className={classes.fieldWrapper}>
+            <div>
+              <IconField
+                registerName={`${registerName}.${index}.icon`}
+              />
+            </div>
+            <div className={classes.inputWrapper}>
+              <InputField
+                registerName={`${registerName}.${index}.url`}
+                placeholder="請輸入網址"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+      <Button type="button" variant="contained" size="large" className={classes.addBtn} onClick={onAppend}>
+        增加
+      </Button>
     </div>
   );
 }

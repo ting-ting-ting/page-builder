@@ -14,13 +14,17 @@ const Profiles1Editor = () => {
         />
       </div>
       <div className={classes.descFieldWrapper}>
-        <EditorField
-          label="簡介"
-          registerName="profiles1_desc"
-        />
-        <IconLinksFieldArray
-          registerName="profiles1_icons"
-        />
+        <div>
+          <EditorField
+            label="簡介"
+            registerName="profiles1_desc"
+          />
+        </div>
+        <div>
+          <IconLinksFieldArray
+            registerName="profiles1_icons"
+          />
+        </div>
       </div>
     </div>
   );
