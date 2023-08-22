@@ -14,7 +14,6 @@ const IconField = ({
   defaultValue,
   disabled,
   label,
-  placeholder = "請輸入",
   register,
   registerName,
   required,
@@ -50,20 +49,26 @@ const IconField = ({
       {label && (
         <p className={classes.label}>{label}</p>
       )}
-      <Input
-        fullWidth
-        clearable={clearable}
-        className={classes.input}
-        inputProps={{
-          id: registerName,
-          name: registerName,
-          onBlur: registration.onBlur,
-        }}
-        {...registration}
-        onChange={registration.onChange}
-        placeholder={placeholder}
-        value={watchValue}
-      />
+      <div className={classes.fieldsWrapper}>
+        <div className={classes.iconSelector}>
+
+        </div>
+        <Input
+          fullWidth
+          clearable={clearable}
+          className={classes.input}
+          inputProps={{
+            id: registerName,
+            name: registerName,
+            onBlur: registration.onBlur,
+          }}
+          {...registration}
+          onChange={registration.onChange}
+          placeholder="請輸入網址"
+          size="large"
+          value={watchValue}
+        />
+      </div>
     </div>
   );
 };

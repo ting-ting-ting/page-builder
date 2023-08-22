@@ -1,5 +1,6 @@
 import UploadImageField from '@components/Form/UploadImageField';
 import EditorField from '@components/Form/EditorField';
+import IconField from '@components/Form/IconField';
 import classes from './editor.module.scss';
 
 const Profiles1Editor = () => {
@@ -16,6 +17,9 @@ const Profiles1Editor = () => {
         <EditorField
           label="簡介"
           registerName="profiles1_desc"
+        />
+        <IconField
+          registerName="icon"
         />
       </div>
     </div>
