@@ -9,12 +9,14 @@ export interface BaseFieldProps {
   children: ReactNode;
   name: string;
   label?: string;
+  errors?: Record<string, FieldError | undefined>;
 }
 
 const BaseField = ({
   children,
   label,
   name,
+  errors,
 }: BaseFieldProps) => (
   <div className={classes.root}>
     {!!label && (

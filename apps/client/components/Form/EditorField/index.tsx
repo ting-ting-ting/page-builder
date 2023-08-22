@@ -1,6 +1,7 @@
 import Quill from 'react-quill';
 import { useFormContext, useWatch } from 'react-hook-form';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
+import BaseField from '@components/Form/BaseField';
 import 'quill/dist/quill.snow.css';
 import classes from './index.module.scss';
 
@@ -30,10 +31,10 @@ const EditorField = ({
     }) || "";
 
   return (
-    <div className={classes.root}>
-      {label && (
-        <p className={classes.label}>{label}</p>
-      )}
+    <BaseField
+      label={label}
+      name={registerName}
+    >
       <Quill
         className={classes.editor}
         placeholder={placeholder}
@@ -51,7 +52,7 @@ const EditorField = ({
         }}
         value={watchValue}
       />
-    </div>
+    </BaseField>
   );
 };
 
