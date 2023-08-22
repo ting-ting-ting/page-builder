@@ -1,5 +1,10 @@
-import { useCallback, useState, ReactNode } from 'react';
+import { useCallback, useState, useEffect, ReactNode } from 'react';
 import moment from 'moment';
+import {
+  StorageName,
+  setLocalStorage,
+  getLocalStorage,
+} from '@utils/storage';
 import { uniqueId, omit } from 'lodash';
 import { TemplateContextProvider } from './Context';
 import { TemplateIdEnum } from '../enum';
@@ -14,6 +19,14 @@ const TemplateProvider = ({ children } : { children: ReactNode }) => {
       props: TemplateProps;
     }
   }>({});
+
+  useEffect(() => {
+    setLocalStorage(StorageName.TEMPLATE_UUIDS, JSON.stringify(templateUuids));
+  }, [templateUuids]);
+
+  useEffect(() => {
+    setLocalStorage(StorageName.TEMPLATE_DATA_WITH_UUID, JSON.stringify(templatesDataWithUuid));
+  }, [templatesDataWithUuid]);
 
   const push = useCallback(({
     id,
