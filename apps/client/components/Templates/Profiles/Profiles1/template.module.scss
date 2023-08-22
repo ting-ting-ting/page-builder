@@ -41,6 +41,14 @@
         font-weight: 500;
         color: var(--black);
       }
+
+      .icons {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 8px;
+        margin-top: 16px;
+      }
     }
   }
 }

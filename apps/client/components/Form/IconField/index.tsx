@@ -56,7 +56,7 @@ const IconField = ({
         >
           {watchValue ? (
             <div className={classes.iconValue}>
-              {getIcon(watchValue)}
+              {getIcon(watchValue, classes.icon)}
             </div>
           ) : (
             <span className={classes.iconPlaceholder}>Icon</span>
