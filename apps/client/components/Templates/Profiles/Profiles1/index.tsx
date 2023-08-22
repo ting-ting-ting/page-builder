@@ -20,6 +20,10 @@ export const profiles1Index: {
     defaultValues: {
       profiles1_avatar: '',
       profiles1_desc: '<p>我是簡介</p>',
+      profiles1_icons: [{
+        icon: '',
+        url: '',
+      }],
     },
   },
 }

@@ -46,43 +46,41 @@ const IconField = ({
 
   return (
     <div className={classes.root}>
-      <div className={classes.fieldsWrapper}>
-        <div ref={nodeRef}>
-          <div
-            className={classes.iconSelector}
-            ref={controlRef}
-            onClick={() => {
-              setOpen(s => !s);
-            }}
-          >
-            {watchValue ? (
-              <div className={classes.iconValue}>
-                {getIcon(watchValue)}
-              </div>
-            ) : (
-              <span className={classes.iconPlaceholder}>Icon</span>
-            )}
-          </div>
-          <Menu
-            disablePortal
-            open={open}
-            controlRef={controlRef}
-          >
-            <div className={classes.iconsWrapper}>
-              {icons.map(icon => (
-                <div
-                  key={icon.id}
-                  className={classes.iconBtn}
-                  onClick={() => {
-                    setValue(registerName, icon.id);
-                  }}
-                >
-                  {icon.icon}
-                </div>
-              ))}
+      <div ref={nodeRef}>
+        <div
+          className={classes.iconSelector}
+          ref={controlRef}
+          onClick={() => {
+            setOpen(s => !s);
+          }}
+        >
+          {watchValue ? (
+            <div className={classes.iconValue}>
+              {getIcon(watchValue)}
             </div>
-          </Menu>
+          ) : (
+            <span className={classes.iconPlaceholder}>Icon</span>
+          )}
         </div>
+        <Menu
+          disablePortal
+          open={open}
+          controlRef={controlRef}
+        >
+          <div className={classes.iconsWrapper}>
+            {icons.map(icon => (
+              <div
+                key={icon.id}
+                className={classes.iconBtn}
+                onClick={() => {
+                  setValue(registerName, icon.id);
+                }}
+              >
+                {icon.icon}
+              </div>
+            ))}
+          </div>
+        </Menu>
       </div>
     </div>
   );

@@ -10,36 +10,29 @@
   width: 100%;
   height: 100%;
 
-  .fieldsWrapper {
+  .iconSelector {
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: flex-start;
-    gap: 12px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: 1px solid var(--gray3);
+    transition: transition.standard(border);
 
-    .iconSelector {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      cursor: pointer;
-      border: 1px solid var(--gray3);
-      transition: transition.standard(border);
-
-      &:hover {
-        border-color: var(--green3);
-      }
+    &:hover {
+      border-color: var(--green3);
     }
+  }
 
-    .iconValue {
-      width: 40px;
-      height: 40px;
+  .iconValue {
+    width: 40px;
+    height: 40px;
 
-      svg {
-        width: 100%;
-        height: 100%;
-        transition: transition.standard(color);
-      }
+    svg {
+      width: 100%;
+      height: 100%;
+      transition: transition.standard(color);
     }
   }
 }
