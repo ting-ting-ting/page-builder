@@ -1,43 +1,28 @@
-import { RefObject, Dispatch, SetStateAction, useRef, ReactNode } from 'react';
+import { RefObject, useRef, ReactNode } from 'react';
 import { Modifier } from '@popperjs/core';
-import { Fade, Popper, cx, useClickAway } from '@mezzanine-ui/react';
+import { Fade, Popper, cx } from '@mezzanine-ui/react';
 import classes from './index.module.scss';
 
 type MenuProps = {
   children: ReactNode;
   open: boolean;
-  setOpen: Dispatch<SetStateAction<boolean>>
   controlRef: RefObject<HTMLDivElement>;
   sameWidth?: boolean;
   wrapperClassName?: string;
   className?: string;
+  disablePortal?: boolean;
 }
 
 const Menu = ({
   children,
   open,
-  setOpen,
   controlRef,
   sameWidth = false,
   wrapperClassName,
   className,
+  disablePortal,
 } : MenuProps) => {
   const menuRef = useRef<HTMLDivElement>(null);
-
-  // useClickAway(
-  //   () => {
-  //     if (!open) return;
-
-  //     return () => {
-  //       setOpen(false);
-  //     };
-  //   },
-  //   menuRef,
-  //   [
-  //     menuRef,
-  //     open,
-  //   ],
-  // );
 
   const sameWidthModifier: Modifier<'sameWidth', Record<string, unknown>> = {
     name: 'sameWidth',
@@ -62,6 +47,7 @@ const Menu = ({
     <Fade in={open}>
       <Popper
         open
+        disablePortal={disablePortal}
         anchor={controlRef}
         className={cx(classes.menuWrapper, wrapperClassName)}
         options={{
