@@ -1,9 +1,11 @@
 import { useCallback, useRef } from 'react';
 import { useDropzone } from 'react-dropzone';
-import { useWatch, useFormContext } from 'react-hook-form';
+import { useWatch, useFormContext, useFormState } from 'react-hook-form';
+import { ErrorMessage as HookformErrorMessage } from '@hookform/error-message';
 import { Icon, cx } from '@mezzanine-ui/react';
 import { PlusIcon } from '@mezzanine-ui/icons';
 import { readFile } from '@utils/files';
+import ErrorMessage from '@components/Form/ErrorMessage';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
 import classes from './index.module.scss';
 
@@ -21,6 +23,8 @@ const UploadImageField = ({
   const inputRef = useRef<HTMLInputElement>(null);
 
   const { control: contextControl, setValue } = useFormContext();
+
+  const { errors } = useFormState({ control: control || contextControl });
 
   const watchValue = useWatch({
     control: control || contextControl,
@@ -98,6 +102,13 @@ const UploadImageField = ({
         </button>
       </div>
       <p className={classes.hint}>{hint}</p>
+      <HookformErrorMessage
+        errors={errors}
+        name={registerName}
+        render={({ message }) => (
+          <ErrorMessage message={message} />
+        )}
+      />
     </>
   );
 };

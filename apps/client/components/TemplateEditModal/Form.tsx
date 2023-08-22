@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useMemo, memo, Dispatch, SetStateAction } from 'react';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { Button, Icon, IconButton, cx } from '@mezzanine-ui/react';
 import { ChevronLeftIcon, ChevronRightIcon } from '@mezzanine-ui/icons';
 import { useForm } from 'react-hook-form';
@@ -43,8 +44,11 @@ const Form = ({
     return targetTemplate.defaultValues;
   }, [templatesDataWithUuid, editMode, uuid, targetTemplate]);
 
+  const schema = useMemo((): any => targetTemplate.schema, [targetTemplate]);
+
   const methods = useForm<TemplateProps>({
     defaultValues,
+    resolver: yupResolver(schema),
   });
 
   const props = methods.watch();
