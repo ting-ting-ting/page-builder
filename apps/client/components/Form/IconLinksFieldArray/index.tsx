@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import { useFieldArray, useFormContext } from 'react-hook-form';
-import { Button } from '@mezzanine-ui/react';
+import { Button, IconButton, Icon } from '@mezzanine-ui/react';
+import { TrashIcon } from '@mezzanine-ui/icons';
 import IconField from '@components/Form/IconField';
 import InputField from '@components/Form/InputField';
 import { RegisteredFieldProps, HookFormFieldType } from '../typing';
@@ -40,6 +41,14 @@ const IconLinksFieldArray = ({
                 placeholder="請輸入網址"
               />
             </div>
+            <IconButton
+              size="large"
+              onClick={() => {
+                remove(index);
+              }}
+            >
+              <Icon icon={TrashIcon} />
+            </IconButton>
           </div>
         ))}
       </div>

@@ -1,3 +1,4 @@
+import cx from 'classnames';
 import UploadImageField from '@components/Form/UploadImageField';
 import EditorField from '@components/Form/EditorField';
 import IconLinksFieldArray from '@components/Form/IconLinksFieldArray';
@@ -14,13 +15,13 @@ const Profiles1Editor = () => {
         />
       </div>
       <div className={classes.descFieldWrapper}>
-        <div>
+        <div className={cx(classes.fieldWrapper, classes.editorField)}>
           <EditorField
             label="簡介"
             registerName="profiles1_desc"
           />
         </div>
-        <div>
+        <div className={classes.fieldWrapper}>
           <IconLinksFieldArray
             registerName="profiles1_icons"
           />

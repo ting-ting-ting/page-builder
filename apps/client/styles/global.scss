@@ -67,6 +67,16 @@ body {
   }
 }
 
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background-color: var(--gray4);
+}
+
 a {
   color: var(--green3);
   text-decoration: underline;

@@ -12,7 +12,21 @@
   }
 
   .descFieldWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     width: gs-columns-width(9);
     height: 100%;
+    gap: 32px;
+
+    .fieldWrapper {
+      flex: 1;
+      align-self: stretch;
+    }
+
+    .editorField {
+      min-height: 320px;
+    }
   }
 }
