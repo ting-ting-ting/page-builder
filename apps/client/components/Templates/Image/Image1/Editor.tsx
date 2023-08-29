@@ -1,4 +1,5 @@
 import UploadImageField from '@components/Form/UploadImageField';
+import { Image1FieldNames } from './typing';
 import classes from './editor.module.scss';
 
 const Image1Editor = () => {
@@ -7,21 +8,21 @@ const Image1Editor = () => {
       <div className={classes.fieldWrapper}>
         <UploadImageField
           label="圖一"
-          registerName="image1_i1"
+          registerName={Image1FieldNames.image1_i1}
           hint="建議尺寸: 900px X 600px"
         />
       </div>
       <div className={classes.fieldWrapper}>
         <UploadImageField
           label="圖二"
-          registerName="image1_i2"
+          registerName={Image1FieldNames.image1_i2}
           hint="建議尺寸: 900px X 600px"
         />
       </div>
       <div className={classes.fieldWrapper}>
         <UploadImageField
           label="圖三"
-          registerName="image1_i3"
+          registerName={Image1FieldNames.image1_i3}
           hint="建議尺寸: 900px X 600px"
         />
       </div>

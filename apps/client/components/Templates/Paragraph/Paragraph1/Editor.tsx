@@ -1,4 +1,5 @@
 import EditorField from '@components/Form/EditorField';
+import { Paragraph1FieldNames } from './typing';
 import classes from './editor.module.scss';
 
 const Paragraph1Editor = () => {
@@ -7,19 +8,19 @@ const Paragraph1Editor = () => {
       <div className={classes.fieldWrapper}>
         <EditorField
           label="段落一"
-          registerName="paragraph1_p1"
+          registerName={Paragraph1FieldNames.paragraph1_p1}
         />
       </div>
       <div className={classes.fieldWrapper}>
         <EditorField
           label="段落二"
-          registerName="paragraph1_p2"
+          registerName={Paragraph1FieldNames.paragraph1_p2}
         />
       </div>
       <div className={classes.fieldWrapper}>
         <EditorField
           label="段落三"
-          registerName="paragraph1_p3"
+          registerName={Paragraph1FieldNames.paragraph1_p3}
         />
       </div>
     </div>
