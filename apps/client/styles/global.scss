@@ -4,7 +4,7 @@
 @import './mezzanine.scss';
 
 :root {
-  --full-width: 100vw;
+  --full-width: calc(100% - 8px);
 
   /* grid system */
   --grid-system-gap: #{$gs-gutter-1441};
@@ -59,12 +59,7 @@ html {
 
 body {
   position: relative;
-  width: 100%;
-
-  -ms-overflow-style: none;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  width: 100% !important;
 }
 
 ::-webkit-scrollbar {
